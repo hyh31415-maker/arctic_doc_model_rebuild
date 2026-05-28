@@ -1,0 +1,7 @@
+decision_item,status,evidence,recommendation,blocking_for_prediction
+primary_model_after_refinement,R4_river_specific_Q_and_season + linear_regression,Refinement selection table reviewed candidate improvements against finalized F3.,Use the selected validation-only concentration model as the next production candidate.,False
+river_bias_acceptable,true_with_caveats,Lena RMSE did not worsen and improved relative to F3.,Proceed with river-specific caveats.,False
+high_doc_bias_acceptable,true_with_caveats,High-DOC bias improved or did not worsen.,Carry high-DOC residual caveat forward.,False
+fold_stability_acceptable,true_with_caveats,Unstable fold count did not increase.,Carry LOYO fold caveats forward.,False
+empirical_interval_strategy,true,Concentration uncertainty phase produced empirical residual intervals.,Use validation residual intervals with clear caveats; do not treat as final production intervals until production run is authorized.,False
+ready_for_production_daily_prediction,true_with_caveats,No production prediction was generated in this phase.,Proceed only after freezing the refined model spec and carrying empirical interval caveats.,False

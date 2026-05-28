@@ -1,0 +1,11 @@
+feature_set,description,numeric_features,categorical_features,target_scale,caveat,uses_optical,uses_basin_context,uses_prediction_grid
+B0_F3_finalized,Finalized F3 baseline comparator.,log_Q;sin_doy;cos_doy,river,raw,,False,False,False
+R1_nonlinear_Q,F3 plus quadratic log discharge.,log_Q;sin_doy;cos_doy;log_Q_squared,river,raw,,False,False,False
+R2_river_specific_Q_slope,F3 plus river-by-log_Q interactions.,log_Q;sin_doy;cos_doy;Kolyma__x__log_Q;Lena__x__log_Q;Mackenzie__x__log_Q;Ob__x__log_Q;Yenisey__x__log_Q;Yukon__x__log_Q,river,raw,,False,False,False
+R3_river_specific_seasonality,F3 plus river-specific seasonal harmonic interactions.,log_Q;sin_doy;cos_doy;Kolyma__x__sin_doy;Lena__x__sin_doy;Mackenzie__x__sin_doy;Ob__x__sin_doy;Yenisey__x__sin_doy;Yukon__x__sin_doy;Kolyma__x__cos_doy;Lena__x__cos_doy;Mackenzie__x__cos_doy;Ob__x__cos_doy;Yenisey__x__cos_doy;Yukon__x__cos_doy,river,raw,,False,False,False
+R4_river_specific_Q_and_season,F3 plus river-specific Q and seasonal interactions.,log_Q;sin_doy;cos_doy;Kolyma__x__log_Q;Lena__x__log_Q;Mackenzie__x__log_Q;Ob__x__log_Q;Yenisey__x__log_Q;Yukon__x__log_Q;Kolyma__x__sin_doy;Lena__x__sin_doy;Mackenzie__x__sin_doy;Ob__x__sin_doy;Yenisey__x__sin_doy;Yukon__x__sin_doy;Kolyma__x__cos_doy;Lena__x__cos_doy;Mackenzie__x__cos_doy;Ob__x__cos_doy;Yenisey__x__cos_doy;Yukon__x__cos_doy,river,raw,,False,False,False
+R5_season_window,F3 plus provisional season-window category.,log_Q;sin_doy;cos_doy,river;season_window,raw,,False,False,False
+R6_high_flow_indicator,F3 plus within-river high-flow flag and log_Q interaction.,log_Q;sin_doy;cos_doy;high_flow_flag;log_Q_high_flow,river,raw,,False,False,False
+R7_robust_huber_F3,F3 features with Huber robust regression.,log_Q;sin_doy;cos_doy,river,raw,HuberRegressor sensitivity only.,False,False,False
+R8_log_target_F3,F3 features with log target and exp inverse transform.,log_Q;sin_doy;cos_doy,river,log,Log target cannot be promoted in this phase.,False,False,False
+R9_log_target_R2,River-specific Q slope with log target.,log_Q;sin_doy;cos_doy;Kolyma__x__log_Q;Lena__x__log_Q;Mackenzie__x__log_Q;Ob__x__log_Q;Yenisey__x__log_Q;Yukon__x__log_Q,river,log,Log target cannot be promoted in this phase.,False,False,False

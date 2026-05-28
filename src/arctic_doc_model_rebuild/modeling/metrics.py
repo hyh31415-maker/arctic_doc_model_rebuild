@@ -16,8 +16,8 @@ def _safe_corr(x: pd.Series, y: pd.Series, method: str) -> float:
 
 
 def metric_row(y_true, y_pred) -> dict[str, float]:
-    y_true = pd.to_numeric(pd.Series(y_true), errors="coerce")
-    y_pred = pd.to_numeric(pd.Series(y_pred), errors="coerce")
+    y_true = pd.to_numeric(pd.Series(y_true), errors="coerce").reset_index(drop=True)
+    y_pred = pd.to_numeric(pd.Series(y_pred), errors="coerce").reset_index(drop=True)
     subset = pd.DataFrame({"observed": y_true, "predicted": y_pred}).dropna()
     if subset.empty:
         return {

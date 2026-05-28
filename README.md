@@ -144,3 +144,14 @@ python -m pytest
 ```
 
 Concentration uncertainty evaluates validation-only residual intervals, fold stability, river bias, high-DOC behavior, calibration, bootstrap coefficient stability, and production-readiness for the finalized F3 concentration baseline. It does not load the prediction grid, optical matrices, basin context matrices, or lab optical/CDOM data, and it does not generate production daily DOC prediction or flux.
+
+## Bias-aware Model Refinement Phase
+
+```powershell
+python -m arctic_doc_model_rebuild.cli verify-gold-data
+python -m arctic_doc_model_rebuild.cli run-bias-aware-refinement
+python -m arctic_doc_model_rebuild.cli bias-aware-refinement-report
+python -m pytest
+```
+
+Bias-aware refinement tests interpretable nonlinear, river-interaction, robust-regression, and log-target sensitivity variants against the finalized F3 baseline. It remains validation-only, reads only `training_matrix_hydrocore.csv` as model input, does not load prediction grids or optical/basin matrices, and does not generate production daily DOC prediction or flux.

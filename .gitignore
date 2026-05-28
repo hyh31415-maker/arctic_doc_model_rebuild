@@ -17,6 +17,8 @@ outputs/figures/*
 !outputs/figures/roi_qc/*.png
 !outputs/figures/concentration_uncertainty/
 !outputs/figures/concentration_uncertainty/*.png
+!outputs/figures/bias_refinement/
+!outputs/figures/bias_refinement/*.png
 *.joblib
 *.pkl
 *.pickle

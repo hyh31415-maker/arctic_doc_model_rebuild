@@ -1,0 +1,4 @@
+decision_item,status,feature_set,model_id,target_scale,recommended_action,reason
+recommended_primary_model_after_refinement,R4_river_specific_Q_and_season + linear_regression,R4_river_specific_Q_and_season,linear_regression,raw,replace_f3_with_refined_model,"Candidate met LOYO improvement, Lena, high-DOC, fold-stability, GroupKFold, and interpretability criteria."
+log_target_review,sensitivity_only,R9_log_target_R2,ridge_alpha_0.1,log,do_not_promote_in_this_phase,Log-target candidates remain sensitivity-only unless a separate target-transform decision is made.
+production_readiness_update,pending_refined_readiness_table,R4_river_specific_Q_and_season,linear_regression,raw,see_refined_production_readiness_decision,Production readiness is updated in refined_production_readiness_decision.csv.

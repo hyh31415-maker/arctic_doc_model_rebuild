@@ -1,0 +1,7 @@
+model_id,model_family,model_class,alpha,simple_model_only,validation_only,caveat
+linear_regression,linear,LinearRegression,,True,True,
+ridge_alpha_0.1,ridge,Ridge,0.1,True,True,
+ridge_alpha_1,ridge,Ridge,1.0,True,True,
+ridge_alpha_10,ridge,Ridge,10.0,True,True,
+ridge_alpha_100,ridge,Ridge,100.0,True,True,
+huber_F3,robust_linear,HuberRegressor,,True,True,R7 robust F3 sensitivity only.

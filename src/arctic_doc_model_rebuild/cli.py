@@ -154,6 +154,24 @@ def concentration_uncertainty_report_command(args: argparse.Namespace) -> int:
     return 0
 
 
+def run_bias_aware_refinement_command(args: argparse.Namespace) -> int:
+    from .modeling.bias_refinement import run_bias_aware_refinement
+
+    result = run_bias_aware_refinement()
+    print(f"Bias-aware refinement report written to {result['report']}.")
+    print(f"Bias-aware refinement tables generated: {len(result['tables'])}")
+    print(f"Bias-aware refinement figures generated: {len(result['figures'])}")
+    return 0
+
+
+def bias_aware_refinement_report_command(args: argparse.Namespace) -> int:
+    from .modeling.bias_refinement import write_bias_refinement_report
+
+    report_path = write_bias_refinement_report()
+    print(f"Bias-aware refinement report written to {report_path}.")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="arctic-doc-model", description="Arctic DOC model rebuild data contract tools.")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -176,6 +194,8 @@ def build_parser() -> argparse.ArgumentParser:
     subparsers.add_parser("roi-final-qc-report", help="Rewrite the ROI final QC report from existing ROI QC tables.")
     subparsers.add_parser("run-concentration-uncertainty", help="Run final validation-only DOC concentration uncertainty diagnostics.")
     subparsers.add_parser("concentration-uncertainty-report", help="Rewrite the concentration uncertainty report from existing tables.")
+    subparsers.add_parser("run-bias-aware-refinement", help="Run validation-only bias-aware concentration model refinement diagnostics.")
+    subparsers.add_parser("bias-aware-refinement-report", help="Rewrite the bias-aware refinement report from existing tables.")
     return parser
 
 
@@ -214,6 +234,10 @@ def main(argv: Iterable[str] | None = None) -> int:
         return run_concentration_uncertainty_command(args)
     if args.command == "concentration-uncertainty-report":
         return concentration_uncertainty_report_command(args)
+    if args.command == "run-bias-aware-refinement":
+        return run_bias_aware_refinement_command(args)
+    if args.command == "bias-aware-refinement-report":
+        return bias_aware_refinement_report_command(args)
     parser.error(f"Unknown command: {args.command}")
     return 2
 

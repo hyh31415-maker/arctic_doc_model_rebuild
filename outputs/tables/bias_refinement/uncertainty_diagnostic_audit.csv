@@ -1,0 +1,4 @@
+diagnostic_item,status,n_affected,likely_cause,requires_code_fix,requires_model_refinement,notes
+fold_stability_blank_metrics,ok,0,none,False,False,No blank RMSE/MAE/bias metrics detected.
+major_river_bias_type,rmse_driven,1,Lena_high_rmse,False,True,River-bias blocker is based on high RMSE rather than mean bias.
+high_doc_residual_drivers,review_needed,137,high_DOC_samples_underpredicted_and_low_DOC_overpredicted,False,True,Lena-2014-6 n=1 rmse=10.47; Lena-2011-5 n=1 rmse=9.89; Kolyma-2010-5 n=1 rmse=8.48; Yukon-2011-5 n=1 rmse=8.35; Lena-2019-6 n=1 rmse=6.61
