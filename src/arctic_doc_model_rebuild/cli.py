@@ -80,6 +80,26 @@ def baseline_refinement_report_command(args: argparse.Namespace) -> int:
     return 0
 
 
+def finalize_baseline_command(args: argparse.Namespace) -> int:
+    from .modeling.baseline_final import finalize_baseline
+
+    result = finalize_baseline()
+    print(f"Baseline final reports generated: {len(result['reports'])}")
+    print(f"Baseline final tables generated: {len(result['tables'])}")
+    print(f"Baseline model specs generated: {len(result['specs'])}")
+    return 0
+
+
+def baseline_final_report_command(args: argparse.Namespace) -> int:
+    from .modeling.baseline_final import write_baseline_final_report, write_next_phase_handoff
+
+    report_path = write_baseline_final_report()
+    handoff_path = write_next_phase_handoff()
+    print(f"Baseline final report written to {report_path}.")
+    print(f"Next phase handoff written to {handoff_path}.")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="arctic-doc-model", description="Arctic DOC model rebuild data contract tools.")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -94,6 +114,8 @@ def build_parser() -> argparse.ArgumentParser:
     subparsers.add_parser("baseline-report", help="Rewrite the baseline model report from existing baseline tables.")
     subparsers.add_parser("run-baseline-refinement", help="Run validation-only same-sample baseline refinement diagnostics.")
     subparsers.add_parser("baseline-refinement-report", help="Rewrite the baseline refinement report from existing refinement tables.")
+    subparsers.add_parser("finalize-baseline", help="Finalize the baseline DOC concentration model decision without production prediction.")
+    subparsers.add_parser("baseline-final-report", help="Rewrite the baseline final report and next-phase handoff.")
     return parser
 
 
@@ -116,6 +138,10 @@ def main(argv: Iterable[str] | None = None) -> int:
         return run_baseline_refinement_command(args)
     if args.command == "baseline-refinement-report":
         return baseline_refinement_report_command(args)
+    if args.command == "finalize-baseline":
+        return finalize_baseline_command(args)
+    if args.command == "baseline-final-report":
+        return baseline_final_report_command(args)
     parser.error(f"Unknown command: {args.command}")
     return 2
 

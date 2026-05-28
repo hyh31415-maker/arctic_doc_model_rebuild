@@ -1,0 +1,27 @@
+model_spec_id: primary_baseline_f3_q_season_river_fixed_ridge_alpha_1
+freeze_id: data_freeze_gold_20260526_v1
+input_table: data/processed/gold/training_matrix_hydrocore.csv
+validation_primary: leave_one_year_out
+validation_secondary:
+- river_year_groupkfold
+validation_stress:
+- leave_one_river_out
+production_prediction_allowed: false
+flux_allowed: false
+target: DOC_mgC_L
+target_transform: none
+feature_set: F3_q_season_river_fixed
+numeric_features:
+- log_Q
+- sin_doy
+- cos_doy
+categorical_features:
+- river
+model:
+  type: Ridge
+  alpha: 1.0
+selected_as: primary_baseline
+notes:
+- Selected because F6 hydroclimate extension gives negligible same-sample improvement
+  over F3.
+- River fixed effects mean this is a within-six-river model, not arbitrary river extrapolation.

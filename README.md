@@ -100,3 +100,14 @@ python -m pytest
 ```
 
 Baseline refinement compares F3 and F6 on the same hydrocore complete-case subset, checks raw versus log target sensitivity, and writes validation-only diagnostics. It still reads only `training_matrix_hydrocore.csv` as model input and does not generate production daily DOC prediction or flux.
+
+## Baseline Finalization Phase
+
+```powershell
+python -m arctic_doc_model_rebuild.cli verify-gold-data
+python -m arctic_doc_model_rebuild.cli finalize-baseline
+python -m arctic_doc_model_rebuild.cli baseline-final-report
+python -m pytest
+```
+
+Baseline finalization freezes the selected validation comparator as `F3_q_season_river_fixed + ridge_alpha_1`, writes model decision tables and YAML specs, and hands off to optical sensitivity. It does not train new model families, does not use optical or basin matrices, and does not generate production daily DOC prediction or flux.

@@ -1,0 +1,31 @@
+model_spec_id: log_target_sensitivity_f6_ridge_alpha_1
+freeze_id: data_freeze_gold_20260526_v1
+input_table: data/processed/gold/training_matrix_hydrocore.csv
+validation_primary: leave_one_year_out
+validation_secondary:
+- river_year_groupkfold
+validation_stress:
+- leave_one_river_out
+production_prediction_allowed: false
+flux_allowed: false
+target: DOC_mgC_L
+target_transform: log
+inverse_transform: exp
+feature_set: F6_reduced_hydroclimate_river_fixed
+numeric_features:
+- log_Q
+- sin_doy
+- cos_doy
+- temperature_2m_C
+- positive_degree_day_Cday
+- surface_runoff_m
+categorical_features:
+- river
+model:
+  type: Ridge
+  alpha: 1.0
+selected_as: sensitivity_candidate
+promotion_requires:
+- residual_bias_review
+- river_specific_bias_check
+- high_DOC_residual_check
