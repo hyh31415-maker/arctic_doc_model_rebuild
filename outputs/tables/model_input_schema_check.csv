@@ -1,0 +1,25 @@
+check_name,table_name,passed,status,severity,message
+hydrocore_required_columns,training_matrix_hydrocore.csv,True,ok,error,Required columns present.
+hydrocore_response_column,training_matrix_hydrocore.csv,True,ok,error,DOC_mgC_L exists.
+hydrocore_no_lab_optical,training_matrix_hydrocore.csv,True,ok,error,No lab optical/CDOM predictor columns.
+hydrocore_no_prediction_flux,training_matrix_hydrocore.csv,True,ok,error,No prediction or flux columns.
+hydrocore_min_rows,training_matrix_hydrocore.csv,True,ok,error,Rows: 547
+optical_required_columns,training_matrix_optical_matched_3d.csv,True,ok,error,Required columns present.
+optical_has_bands,training_matrix_optical_matched_3d.csv,True,ok,error,Optical band values found.
+optical_has_sensor,training_matrix_optical_matched_3d.csv,True,ok,error,Sensor column exists.
+optical_has_days_offset,training_matrix_optical_matched_3d.csv,True,ok,error,days_offset column exists.
+optical_no_lab_optical,training_matrix_optical_matched_3d.csv,True,ok,error,No lab optical/CDOM predictor columns.
+optical_no_prediction_flux,training_matrix_optical_matched_3d.csv,True,ok,error,No prediction or flux columns.
+prediction_grid_required_columns,prediction_grid_daily_hydrocore.csv,True,ok,error,Required columns present.
+prediction_grid_no_doc,prediction_grid_daily_hydrocore.csv,True,ok,error,DOC_mgC_L absent.
+prediction_grid_no_prediction_flux,prediction_grid_daily_hydrocore.csv,True,ok,error,No prediction or flux columns.
+prediction_grid_min_rows,prediction_grid_daily_hydrocore.csv,True,ok,error,Rows: 52594
+prediction_grid_required_columns,prediction_grid_daily_with_basin_context.csv,True,ok,error,Required columns present.
+prediction_grid_no_doc,prediction_grid_daily_with_basin_context.csv,True,ok,error,DOC_mgC_L absent.
+prediction_grid_no_prediction_flux,prediction_grid_daily_with_basin_context.csv,True,ok,error,No prediction or flux columns.
+prediction_grid_min_rows,prediction_grid_daily_with_basin_context.csv,True,ok,error,Rows: 52594
+basin_six_rivers,basin_attributes_curated.csv,True,ok,error,"Rivers found: ['Kolyma', 'Lena', 'Mackenzie', 'Ob', 'Yenisey', 'Yukon']"
+basin_id_means_not_predictors,basin_attributes_curated.csv,True,ok,error,ID/topology means are not marked model_use=True.
+basin_wide_no_id_means,basin_attributes_curated_wide.csv,True,ok,error,No ID/topology means in wide predictor table.
+basin_attributes_exist,basin_attributes_curated.csv,True,ok,error,Usable basin attributes exist.
+basin_upstream_area_present,basin_attributes_curated.csv,True,ok,error,upstream_area_km2 present.

@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "arctic-doc-model-rebuild"
+version = "0.1.0"
+description = "Clean Arctic river DOC model rebuild starting from a frozen gold data contract."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "pandas>=2.1",
+  "numpy>=1.26",
+  "PyYAML>=6.0",
+  "tabulate>=0.9",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8.0"]
+
+[project.scripts]
+arctic-doc-model = "arctic_doc_model_rebuild.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-q"

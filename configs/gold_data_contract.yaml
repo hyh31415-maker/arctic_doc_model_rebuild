@@ -1,0 +1,129 @@
+freeze_id: data_freeze_gold_20260526_v1
+source_repo: hyh31415-maker/arctic_doc_data_audit
+source_tag: data_freeze_gold_20260526_v1
+allowed_data_root: data/processed/gold
+model_repo_should_read_only_gold: true
+
+expected_tables:
+  doc_labels_gold.csv:
+    row_count: 547
+    sha256: ac0935691515952075b455061cff9ef8a04f5b58ccdd127e9e5ca6e06c8f6b71
+    role: response_labels
+
+  training_matrix_hydrocore.csv:
+    row_count: 547
+    sha256: 0b4eaf0ebf716e23379f15d56cbff82c105251497346b29aa82c8adba95db8e1
+    role: main_training_matrix
+
+  training_matrix_basin_context.csv:
+    row_count: 547
+    sha256: 2dbcd48e094cade5ef0053f9400f8cc1615e64cd9a9a6c96c165782f92f10522
+    role: basin_context_training_matrix
+
+  training_matrix_optical_matched_0d.csv:
+    row_count: 188
+    sha256: 630c57dddd749c9034db2bdfa40137a512392db926112111fd512803aac2a682
+    role: optical_sensitivity
+
+  training_matrix_optical_matched_1d.csv:
+    row_count: 297
+    sha256: 0ee52cd1851e69a537eb6afe2962260a46cd3ac9dbc2e301950f3ce18fa4518b
+    role: optical_sensitivity
+
+  training_matrix_optical_matched_3d.csv:
+    row_count: 374
+    sha256: b5413d3da3470e20255ff1dc851beeeb062b0c2a16acbc1d747a497f100e3fcc
+    role: optical_sensitivity_main
+
+  training_matrix_optical_matched_3d_hls.csv:
+    row_count: 144
+    sha256: 2f00be03cef96c468d934781d4404cd83c9022d2b4a3dd0eafa20cec831eb471
+    role: optical_sensitivity_sensor_specific
+
+  training_matrix_optical_matched_3d_landsat.csv:
+    row_count: 184
+    sha256: f5a7a3b0e9d3e0829730788c893a1be85d291c6a18cdb7e3d4dc3caff8fb9635
+    role: optical_sensitivity_sensor_specific
+
+  training_matrix_optical_matched_3d_sentinel2.csv:
+    row_count: 46
+    sha256: 0d2fa15318d8eec6af2a96d5aa2ac7a01f47dcc89689356926b8ebf4a496bd12
+    role: optical_sensitivity_sensor_specific
+
+  training_matrix_optical_matched_7d.csv:
+    row_count: 420
+    sha256: 6110815762d71a0eb251413ed6625068c533776f82c058c366d9f6cf8b66d413
+    role: optical_sensitivity_wide_window
+
+  prediction_grid_daily_hydrocore.csv:
+    row_count: 52594
+    sha256: 3ba36c79ad53b14e6b9d08e699bb995a9f694d4ffe75d4565126fb84cec4767b
+    role: future_prediction_grid_x_only
+
+  prediction_grid_daily_with_basin_context.csv:
+    row_count: 52594
+    sha256: 7e6d0800f6c99ba0a486cf1d8ef2d0bb705e3973121b0466b152976802211bc4
+    role: future_prediction_grid_x_only
+
+  basin_attributes_curated.csv:
+    row_count: 240
+    sha256: 6e4d18f8acd58f90a1563b89692e7030fa0464ce7ebdd6a38a4691538a27b171
+    role: basin_attribute_long
+
+  basin_attributes_curated_wide.csv:
+    row_count: 6
+    sha256: 17d4197092bb423ba23a4451521ead9b8416212d4daadc173dd871548b0d9d77
+    role: basin_attribute_wide
+
+  basin_context_gold.csv:
+    row_count: 6
+    sha256: 9910dd6e37df1034e572ae11f468727e1024f7cd398b38ee0e8b6521a5a6e96d
+    role: basin_context
+
+  daily_discharge_gold.csv:
+    row_count: 154370
+    sha256: a351eb43849fda32881890beb77ba84ed74e8b99f382e9cfe38b527b74ac4908
+    role: daily_discharge
+
+  daily_hydroclimate_gold.csv:
+    row_count: 52726
+    sha256: 26722d1cfef703b353a13ffd2ff5209c5e5a073290ff1a09223beb09af7b55fe
+    role: daily_hydroclimate
+
+  optical_timeseries_gold.csv:
+    row_count: 142058
+    sha256: 93e647e53c4fe6668d3a8b7f7477138b2ed3d809bb7f8b9eedb3173e51e07e62
+    role: optical_time_series
+
+  lab_optical_proxy_gold.csv:
+    row_count: 882
+    sha256: 4db6f16f4ee980fe7e7292f73bae780932a0d0c14ba20dee5fd1b69bea986139
+    role: lab_optical_mechanism_only
+
+  roi_catalog_gold.csv:
+    row_count: 39
+    sha256: a466966920441f6befbb307bf6d9c746d0d30189a3508a6a72b962a197ade00f
+    role: roi_metadata
+
+forbidden_predictor_columns:
+  - A254
+  - A350
+  - A355
+  - A375
+  - A412
+  - A420
+  - A440
+  - SUVA254
+  - spectral_slope_275_295
+  - spectral_slope_350_400
+
+forbidden_prediction_grid_columns:
+  - DOC_mgC_L
+  - predicted_DOC
+  - pred_DOC
+  - prediction
+  - flux
+  - TgC
+  - Mg_day
+
+response_column: DOC_mgC_L

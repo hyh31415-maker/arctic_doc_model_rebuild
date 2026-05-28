@@ -1,0 +1,15 @@
+.env
+configs/local_paths.yaml
+data/
+outputs/models/
+outputs/predictions/
+outputs/flux/
+outputs/figures/
+*.joblib
+*.pkl
+*.pickle
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+*.egg-info/
