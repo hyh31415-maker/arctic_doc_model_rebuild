@@ -1,0 +1,2 @@
+model_role,diagnostic,calibration_intercept,calibration_slope,calibration_r2,n,mean_prediction,mean_observation,prediction_std,observation_std,corrective_model_used
+primary_baseline,observed_DOC_equals_a_plus_b_cv_predicted_DOC,0.052052613569498085,0.9925983384105439,0.5924703856887421,545,6.657436321169851,6.660212844036697,2.745082373874197,3.5399375579482983,False

@@ -1,0 +1,4 @@
+model_role,feature_set,model_id,target_scale,selected_as,production_prediction_allowed,flux_allowed
+primary_baseline,F3_q_season_river_fixed,ridge_alpha_1,raw,primary_baseline,False,False
+hydroclimate_extension,F6_reduced_hydroclimate_river_fixed,ridge_alpha_1,raw,extension_not_primary,False,False
+log_target_sensitivity,F6_reduced_hydroclimate_river_fixed,ridge_alpha_1,log,sensitivity_candidate_only,False,False

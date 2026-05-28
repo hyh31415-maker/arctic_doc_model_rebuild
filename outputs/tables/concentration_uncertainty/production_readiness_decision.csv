@@ -1,0 +1,10 @@
+decision_item,status,evidence,recommendation,blocking_for_prediction
+primary_model_selected,true,Baseline finalization selected F3_q_season_river_fixed + ridge_alpha_1.,Use as primary concentration baseline comparator.,False
+optical_excluded,true,Optical sensitivity found no robust incremental value over F3.,Keep optical excluded from primary production path.,False
+hydroclimate_extension_optional,true,Hydroclimate extension remained extension_not_primary in baseline finalization.,Do not require F6 for initial production readiness.,False
+roi_qc_completed,true_with_caveats,ROI QC completed; no freeze reopen recommended.,Carry ROI caveats forward.,False
+residual_interval_available,true,Empirical residual interval rows: 11.,"Use intervals as validation residual intervals, not final production prediction intervals.",False
+river_bias_acceptable,false,Severe river bias flag present.,Refine model before production prediction.,True
+fold_stability_acceptable,true_with_caveats,One or more LOYO folds had high RMSE or high bias.,Carry fold stability caveats into production planning.,False
+log_target_status,sensitivity_only,Log target remains sensitivity_candidate_only and is not promoted in this phase.,Do not promote without a separate residual-bias review.,False
+ready_for_production_daily_prediction,false,No production prediction was generated in this phase.,Resolve blocking items before production daily DOC prediction.,True

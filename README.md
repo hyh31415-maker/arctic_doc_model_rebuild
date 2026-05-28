@@ -133,3 +133,14 @@ python -m pytest
 ```
 
 ROI final QC audits frozen ROI metadata, optical valid-water support, and 3-day optical match integrity after the optical sensitivity result. It does not recalculate ROI, does not re-extract GEE, does not train DOC models, and does not generate production daily DOC prediction or flux.
+
+## Concentration Uncertainty Phase
+
+```powershell
+python -m arctic_doc_model_rebuild.cli verify-gold-data
+python -m arctic_doc_model_rebuild.cli run-concentration-uncertainty
+python -m arctic_doc_model_rebuild.cli concentration-uncertainty-report
+python -m pytest
+```
+
+Concentration uncertainty evaluates validation-only residual intervals, fold stability, river bias, high-DOC behavior, calibration, bootstrap coefficient stability, and production-readiness for the finalized F3 concentration baseline. It does not load the prediction grid, optical matrices, basin context matrices, or lab optical/CDOM data, and it does not generate production daily DOC prediction or flux.

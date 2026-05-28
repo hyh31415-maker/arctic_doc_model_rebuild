@@ -15,6 +15,8 @@ outputs/figures/*
 !outputs/figures/optical_sensitivity/*.png
 !outputs/figures/roi_qc/
 !outputs/figures/roi_qc/*.png
+!outputs/figures/concentration_uncertainty/
+!outputs/figures/concentration_uncertainty/*.png
 *.joblib
 *.pkl
 *.pickle

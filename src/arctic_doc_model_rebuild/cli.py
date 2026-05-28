@@ -136,6 +136,24 @@ def roi_final_qc_report_command(args: argparse.Namespace) -> int:
     return 0
 
 
+def run_concentration_uncertainty_command(args: argparse.Namespace) -> int:
+    from .modeling.concentration_uncertainty import run_concentration_uncertainty
+
+    result = run_concentration_uncertainty()
+    print(f"Concentration uncertainty report written to {result['report']}.")
+    print(f"Concentration uncertainty tables generated: {len(result['tables'])}")
+    print(f"Concentration uncertainty figures generated: {len(result['figures'])}")
+    return 0
+
+
+def concentration_uncertainty_report_command(args: argparse.Namespace) -> int:
+    from .modeling.concentration_uncertainty import write_concentration_uncertainty_report
+
+    report_path = write_concentration_uncertainty_report()
+    print(f"Concentration uncertainty report written to {report_path}.")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="arctic-doc-model", description="Arctic DOC model rebuild data contract tools.")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -156,6 +174,8 @@ def build_parser() -> argparse.ArgumentParser:
     subparsers.add_parser("optical-sensitivity-report", help="Rewrite the optical sensitivity report from existing optical sensitivity tables.")
     subparsers.add_parser("roi-final-qc", help="Audit frozen ROI and optical data integrity without modifying gold data.")
     subparsers.add_parser("roi-final-qc-report", help="Rewrite the ROI final QC report from existing ROI QC tables.")
+    subparsers.add_parser("run-concentration-uncertainty", help="Run final validation-only DOC concentration uncertainty diagnostics.")
+    subparsers.add_parser("concentration-uncertainty-report", help="Rewrite the concentration uncertainty report from existing tables.")
     return parser
 
 
@@ -190,6 +210,10 @@ def main(argv: Iterable[str] | None = None) -> int:
         return roi_final_qc_command(args)
     if args.command == "roi-final-qc-report":
         return roi_final_qc_report_command(args)
+    if args.command == "run-concentration-uncertainty":
+        return run_concentration_uncertainty_command(args)
+    if args.command == "concentration-uncertainty-report":
+        return concentration_uncertainty_report_command(args)
     parser.error(f"Unknown command: {args.command}")
     return 2
 
