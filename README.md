@@ -78,3 +78,14 @@ python -m pytest
 EDA writes descriptive reports, tables, and lightweight figures under `outputs/reports/eda/`, `outputs/tables/eda/`, and `outputs/figures/eda/`.
 
 EDA does not train models, does not generate DOC predictions, and does not generate flux.
+
+## Baseline Model Phase 1
+
+```powershell
+python -m arctic_doc_model_rebuild.cli verify-gold-data
+python -m arctic_doc_model_rebuild.cli run-baseline-models
+python -m arctic_doc_model_rebuild.cli baseline-report
+python -m pytest
+```
+
+Baseline phase 1 trains simple DOC concentration models for cross-validation diagnostics only. It reads only `training_matrix_hydrocore.csv` as model input. It does not read the daily prediction grid, optical matrices, or basin context matrices; it does not generate production daily DOC prediction or flux.

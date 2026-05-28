@@ -7,6 +7,8 @@ outputs/flux/
 outputs/figures/*
 !outputs/figures/eda/
 !outputs/figures/eda/*.png
+!outputs/figures/baseline/
+!outputs/figures/baseline/*.png
 *.joblib
 *.pkl
 *.pickle

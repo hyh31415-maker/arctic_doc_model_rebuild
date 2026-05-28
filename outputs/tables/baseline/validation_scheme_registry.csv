@@ -1,0 +1,4 @@
+validation_scheme,validation_role,group_column,description,stress_test,primary_for_model_selection
+leave_one_year_out,primary,year,Leave one sampled year out at a time.,False,True
+river_year_groupkfold,secondary_structure_check,river_year,Five-fold GroupKFold using river-year groups.,False,False
+leave_one_river_out,stress_test,river,Held-out river stress test; not primary selection with only six rivers.,True,False

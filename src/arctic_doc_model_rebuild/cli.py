@@ -44,6 +44,24 @@ def run_eda_command(args: argparse.Namespace) -> int:
     return 0
 
 
+def run_baseline_models_command(args: argparse.Namespace) -> int:
+    from .modeling.baseline_models import run_baseline_models
+
+    result = run_baseline_models()
+    print(f"Baseline report written to {result['report']}.")
+    print(f"Baseline tables generated: {len(result['tables'])}")
+    print(f"Baseline figures generated: {len(result['figures'])}")
+    return 0
+
+
+def baseline_report_command(args: argparse.Namespace) -> int:
+    from .modeling.reports import write_baseline_report_from_tables
+
+    report_path = write_baseline_report_from_tables()
+    print(f"Baseline report written to {report_path}.")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="arctic-doc-model", description="Arctic DOC model rebuild data contract tools.")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -54,6 +72,8 @@ def build_parser() -> argparse.ArgumentParser:
     subparsers.add_parser("summarize-gold-data", help="Summarize frozen gold inputs without modeling.")
     subparsers.add_parser("data-contract-report", help="Write the gold data contract report without modeling.")
     subparsers.add_parser("run-eda", help="Run descriptive EDA on frozen gold data without model training.")
+    subparsers.add_parser("run-baseline-models", help="Train validation-only baseline DOC concentration models.")
+    subparsers.add_parser("baseline-report", help="Rewrite the baseline model report from existing baseline tables.")
     return parser
 
 
@@ -68,6 +88,10 @@ def main(argv: Iterable[str] | None = None) -> int:
         return report_command(args)
     if args.command == "run-eda":
         return run_eda_command(args)
+    if args.command == "run-baseline-models":
+        return run_baseline_models_command(args)
+    if args.command == "baseline-report":
+        return baseline_report_command(args)
     parser.error(f"Unknown command: {args.command}")
     return 2
 

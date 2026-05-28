@@ -1,0 +1,8 @@
+feature_set,required_columns,rows_total,rows_available,rows_dropped,drop_rate,sensitivity_only,caveat
+F0_intercept_only,,547,547,0,0.0,False,
+F1_season_only,sin_doy;cos_doy,547,547,0,0.0,False,
+F2_q_season,log_Q;sin_doy;cos_doy,547,545,2,0.003656307129798903,False,
+F3_q_season_river_fixed,log_Q;sin_doy;cos_doy;river,547,545,2,0.003656307129798903,False,Leave-one-river-out is a structural stress test for unseen river categories.
+F4_reduced_hydroclimate,log_Q;sin_doy;cos_doy;temperature_2m_C;positive_degree_day_Cday;surface_runoff_m,547,511,36,0.06581352833638025,False,
+F5_snow_hydroclimate_complete_case,log_Q;sin_doy;cos_doy;temperature_2m_C;positive_degree_day_Cday;surface_runoff_m;snow_cover_fraction;snow_depletion_rate_7d,547,325,222,0.40585009140767825,True,Snow variables have high missingness; do not use as main model without a missingness strategy.
+F6_reduced_hydroclimate_river_fixed,log_Q;sin_doy;cos_doy;temperature_2m_C;positive_degree_day_Cday;surface_runoff_m;river,547,511,36,0.06581352833638025,False,River fixed effects are not reliable for held-out unseen rivers.

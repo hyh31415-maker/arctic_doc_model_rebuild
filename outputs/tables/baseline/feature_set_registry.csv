@@ -1,0 +1,8 @@
+feature_set,description,numeric_features,categorical_features,all_features,sensitivity_only,caveat
+F0_intercept_only,Training-fold mean DOC baseline.,,,,False,
+F1_season_only,Seasonal harmonic baseline.,sin_doy;cos_doy,,sin_doy;cos_doy,False,
+F2_q_season,Discharge plus seasonal harmonics.,log_Q;sin_doy;cos_doy,,log_Q;sin_doy;cos_doy,False,
+F3_q_season_river_fixed,"Discharge, seasonal harmonics, and river one-hot fixed effects.",log_Q;sin_doy;cos_doy,river,log_Q;sin_doy;cos_doy;river,False,Leave-one-river-out is a structural stress test for unseen river categories.
+F4_reduced_hydroclimate,"Q, season, temperature, positive degree days, and surface runoff complete cases.",log_Q;sin_doy;cos_doy;temperature_2m_C;positive_degree_day_Cday;surface_runoff_m,,log_Q;sin_doy;cos_doy;temperature_2m_C;positive_degree_day_Cday;surface_runoff_m,False,
+F5_snow_hydroclimate_complete_case,Complete-case snow hydroclimate sensitivity.,log_Q;sin_doy;cos_doy;temperature_2m_C;positive_degree_day_Cday;surface_runoff_m;snow_cover_fraction;snow_depletion_rate_7d,,log_Q;sin_doy;cos_doy;temperature_2m_C;positive_degree_day_Cday;surface_runoff_m;snow_cover_fraction;snow_depletion_rate_7d,True,Snow variables have high missingness; do not use as main model without a missingness strategy.
+F6_reduced_hydroclimate_river_fixed,Reduced hydroclimate model with river one-hot fixed effects.,log_Q;sin_doy;cos_doy;temperature_2m_C;positive_degree_day_Cday;surface_runoff_m,river,log_Q;sin_doy;cos_doy;temperature_2m_C;positive_degree_day_Cday;surface_runoff_m;river,False,River fixed effects are not reliable for held-out unseen rivers.
