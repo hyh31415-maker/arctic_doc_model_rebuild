@@ -122,3 +122,14 @@ python -m pytest
 ```
 
 Optical sensitivity tests whether satellite optical proxy variables improve the finalized `F3_q_season_river_fixed + ridge_alpha_1` baseline on identical optical-matched subsets. It trains validation-only DOC concentration diagnostics, does not read the daily prediction grid or basin context matrices, and does not generate production daily DOC prediction or flux.
+
+## ROI Final QC Phase
+
+```powershell
+python -m arctic_doc_model_rebuild.cli verify-gold-data
+python -m arctic_doc_model_rebuild.cli roi-final-qc
+python -m arctic_doc_model_rebuild.cli roi-final-qc-report
+python -m pytest
+```
+
+ROI final QC audits frozen ROI metadata, optical valid-water support, and 3-day optical match integrity after the optical sensitivity result. It does not recalculate ROI, does not re-extract GEE, does not train DOC models, and does not generate production daily DOC prediction or flux.

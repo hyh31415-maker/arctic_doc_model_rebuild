@@ -13,6 +13,8 @@ outputs/figures/*
 !outputs/figures/baseline_refinement/*.png
 !outputs/figures/optical_sensitivity/
 !outputs/figures/optical_sensitivity/*.png
+!outputs/figures/roi_qc/
+!outputs/figures/roi_qc/*.png
 *.joblib
 *.pkl
 *.pickle

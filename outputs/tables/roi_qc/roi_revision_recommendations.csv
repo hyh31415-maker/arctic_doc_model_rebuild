@@ -1,0 +1,7 @@
+river,roi_decision,reopen_freeze_recommendation,recommended_action,notes
+Kolyma,roi_accepted_with_caveat,no,retain_frozen_roi_with_documented_caveats,valid-water pixels are often low across the optical time series; sensor-specific subset underpowered: hls_3d;sentinel2_3d; legacy ROI requires external visual review
+Lena,roi_accepted_with_caveat,no,retain_frozen_roi_with_documented_caveats,valid-water pixels are often low across the optical time series; sensor-specific subset underpowered: hls_3d;sentinel2_3d; legacy ROI requires external visual review
+Mackenzie,roi_accepted_with_caveat,no,retain_frozen_roi_with_documented_caveats,valid-water pixels are often low across the optical time series; sensor-specific subset underpowered: hls_3d;sentinel2_3d; legacy ROI requires external visual review
+Ob,roi_accepted_with_caveat,no,retain_frozen_roi_with_documented_caveats,legacy ROI requires external visual review; sensor-specific subset underpowered: hls_3d;sentinel2_3d
+Yenisey,roi_accepted_with_caveat,no,retain_frozen_roi_with_documented_caveats,valid-water pixels are often low across the optical time series; sensor-specific subset underpowered: hls_3d;sentinel2_3d; legacy ROI requires external visual review
+Yukon,roi_accepted_with_caveat,no,retain_frozen_roi_with_documented_caveats,valid-water pixels are often low across the optical time series; sensor-specific subset underpowered: hls_3d;sentinel2_3d; legacy ROI requires external visual review

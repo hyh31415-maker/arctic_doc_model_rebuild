@@ -118,6 +118,24 @@ def optical_sensitivity_report_command(args: argparse.Namespace) -> int:
     return 0
 
 
+def roi_final_qc_command(args: argparse.Namespace) -> int:
+    from .roi_qc import run_roi_final_qc
+
+    result = run_roi_final_qc()
+    print(f"ROI final QC report written to {result['report']}.")
+    print(f"ROI final QC tables generated: {len(result['tables'])}")
+    print(f"ROI final QC figures generated: {len(result['figures'])}")
+    return 0
+
+
+def roi_final_qc_report_command(args: argparse.Namespace) -> int:
+    from .roi_qc import write_roi_final_qc_report
+
+    report_path = write_roi_final_qc_report()
+    print(f"ROI final QC report written to {report_path}.")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="arctic-doc-model", description="Arctic DOC model rebuild data contract tools.")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -136,6 +154,8 @@ def build_parser() -> argparse.ArgumentParser:
     subparsers.add_parser("baseline-final-report", help="Rewrite the baseline final report and next-phase handoff.")
     subparsers.add_parser("run-optical-sensitivity", help="Run validation-only optical sensitivity diagnostics against the finalized F3 baseline.")
     subparsers.add_parser("optical-sensitivity-report", help="Rewrite the optical sensitivity report from existing optical sensitivity tables.")
+    subparsers.add_parser("roi-final-qc", help="Audit frozen ROI and optical data integrity without modifying gold data.")
+    subparsers.add_parser("roi-final-qc-report", help="Rewrite the ROI final QC report from existing ROI QC tables.")
     return parser
 
 
@@ -166,6 +186,10 @@ def main(argv: Iterable[str] | None = None) -> int:
         return run_optical_sensitivity_command(args)
     if args.command == "optical-sensitivity-report":
         return optical_sensitivity_report_command(args)
+    if args.command == "roi-final-qc":
+        return roi_final_qc_command(args)
+    if args.command == "roi-final-qc-report":
+        return roi_final_qc_report_command(args)
     parser.error(f"Unknown command: {args.command}")
     return 2
 
