@@ -217,6 +217,24 @@ def doc_flux_report_command(args: argparse.Namespace) -> int:
     return 0
 
 
+def select_flux_analysis_cohorts_command(args: argparse.Namespace) -> int:
+    from .flux.flux_cohorts import select_flux_analysis_cohorts
+
+    result = select_flux_analysis_cohorts()
+    print(f"Flux cohort report written to {result['report']}.")
+    print(f"Flux cohort tables generated: {len(result['tables'])}")
+    print(f"Flux cohort figures generated: {len(result['figures'])}")
+    return 0
+
+
+def flux_cohort_report_command(args: argparse.Namespace) -> int:
+    from .flux.flux_cohorts import write_flux_cohort_report
+
+    report_path = write_flux_cohort_report()
+    print(f"Flux cohort report written to {report_path}.")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="arctic-doc-model", description="Arctic DOC model rebuild data contract tools.")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -246,6 +264,8 @@ def build_parser() -> argparse.ArgumentParser:
     subparsers.add_parser("daily-doc-prediction-report", help="Rewrite the daily DOC prediction report from existing tables.")
     subparsers.add_parser("run-doc-flux", help="Calculate guarded DOC flux from existing daily DOC predictions without retraining.")
     subparsers.add_parser("doc-flux-report", help="Rewrite the guarded DOC flux report from existing flux tables.")
+    subparsers.add_parser("select-flux-analysis-cohorts", help="Select flux interpretation cohorts from existing DOC flux tables without trend tests.")
+    subparsers.add_parser("flux-cohort-report", help="Rewrite the flux interpretation cohort report from existing cohort tables.")
     return parser
 
 
@@ -298,6 +318,10 @@ def main(argv: Iterable[str] | None = None) -> int:
         return run_doc_flux_command(args)
     if args.command == "doc-flux-report":
         return doc_flux_report_command(args)
+    if args.command == "select-flux-analysis-cohorts":
+        return select_flux_analysis_cohorts_command(args)
+    if args.command == "flux-cohort-report":
+        return flux_cohort_report_command(args)
     parser.error(f"Unknown command: {args.command}")
     return 2
 

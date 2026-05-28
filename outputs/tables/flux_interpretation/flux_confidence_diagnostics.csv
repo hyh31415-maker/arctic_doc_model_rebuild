@@ -1,0 +1,21 @@
+diagnostic_item,river,status,value,affected_years,notes
+river_confidence_summary,Kolyma,caveated,0.3862879047956379,Kolyma:2002;Kolyma:2018,Maximum fraction of flux from low-confidence days; affected_years list years >=0.25.
+coverage_lt_0_95_years,Kolyma,caveated,2.0,Kolyma:2009;Kolyma:2010,Years below 0.95 annual coverage are sensitivity or excluded depending on severity.
+large_extrapolation_flag_years,Kolyma,caveated,25.0,Kolyma:2000;Kolyma:2001;Kolyma:2002;Kolyma:2003;Kolyma:2004;Kolyma:2005;Kolyma:2006;Kolyma:2007;Kolyma:2008;Kolyma:2010;Kolyma:2011;Kolyma:2012;Kolyma:2013;Kolyma:2014;Kolyma:2015;Kolyma:2016;Kolyma:2017;Kolyma:2018;Kolyma:2019;Kolyma:2020;Kolyma:2021;Kolyma:2022;Kolyma:2023;Kolyma:2024;Kolyma:2025,Large extrapolation defined as >=30 logQ+doy extrapolation days in the year.
+river_confidence_summary,Lena,caveated,0.0856816349171507,,Maximum fraction of flux from low-confidence days; affected_years list years >=0.25.
+coverage_lt_0_95_years,Lena,caveated,1.0,Lena:2025,Years below 0.95 annual coverage are sensitivity or excluded depending on severity.
+large_extrapolation_flag_years,Lena,caveated,1.0,Lena:2004,Large extrapolation defined as >=30 logQ+doy extrapolation days in the year.
+river_confidence_summary,Mackenzie,caveated,0.1760548424061565,,Maximum fraction of flux from low-confidence days; affected_years list years >=0.25.
+coverage_lt_0_95_years,Mackenzie,caveated,1.0,Mackenzie:2025,Years below 0.95 annual coverage are sensitivity or excluded depending on severity.
+large_extrapolation_flag_years,Mackenzie,caveated,8.0,Mackenzie:2006;Mackenzie:2012;Mackenzie:2013;Mackenzie:2014;Mackenzie:2020;Mackenzie:2022;Mackenzie:2023;Mackenzie:2024,Large extrapolation defined as >=30 logQ+doy extrapolation days in the year.
+river_confidence_summary,Ob,caveated,0.2877744222397974,Ob:2025,Maximum fraction of flux from low-confidence days; affected_years list years >=0.25.
+coverage_lt_0_95_years,Ob,caveated,1.0,Ob:2000,Years below 0.95 annual coverage are sensitivity or excluded depending on severity.
+large_extrapolation_flag_years,Ob,caveated,7.0,Ob:2001;Ob:2010;Ob:2013;Ob:2018;Ob:2020;Ob:2024;Ob:2025,Large extrapolation defined as >=30 logQ+doy extrapolation days in the year.
+river_confidence_summary,Yenisey,caveated,0.4615561986332222,Yenisey:2000;Yenisey:2001;Yenisey:2002;Yenisey:2003;Yenisey:2004;Yenisey:2005;Yenisey:2006;Yenisey:2011;Yenisey:2013;Yenisey:2018;Yenisey:2023,Maximum fraction of flux from low-confidence days; affected_years list years >=0.25.
+coverage_lt_0_95_years,Yenisey,ok,0.0,,Years below 0.95 annual coverage are sensitivity or excluded depending on severity.
+large_extrapolation_flag_years,Yenisey,ok,0.0,,Large extrapolation defined as >=30 logQ+doy extrapolation days in the year.
+river_confidence_summary,Yukon,caveated,0.0194393412370767,,Maximum fraction of flux from low-confidence days; affected_years list years >=0.25.
+coverage_lt_0_95_years,Yukon,caveated,2.0,Yukon:2000;Yukon:2001,Years below 0.95 annual coverage are sensitivity or excluded depending on severity.
+large_extrapolation_flag_years,Yukon,caveated,4.0,Yukon:2002;Yukon:2005;Yukon:2007;Yukon:2008,Large extrapolation defined as >=30 logQ+doy extrapolation days in the year.
+Yenisey_low_confidence_flux_issue,Yenisey,caveated,0.4615561986332222,Yenisey:2000;Yenisey:2001;Yenisey:2002;Yenisey:2003;Yenisey:2004;Yenisey:2005;Yenisey:2006;Yenisey:2011;Yenisey:2013;Yenisey:2018;Yenisey:2023,Tracks the Yenisey low-confidence flux issue before trend analysis.
+Yukon_zero_or_near_zero_annual_flux_issue,Yukon,caveated,0.0,Yukon:2000,Tracks zero or near-zero Yukon annual flux before trend analysis.

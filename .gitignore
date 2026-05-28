@@ -23,6 +23,8 @@ outputs/figures/*
 !outputs/figures/daily_doc_prediction/*.png
 !outputs/figures/doc_flux/
 !outputs/figures/doc_flux/*.png
+!outputs/figures/flux_interpretation/
+!outputs/figures/flux_interpretation/*.png
 *.joblib
 *.pkl
 *.pickle

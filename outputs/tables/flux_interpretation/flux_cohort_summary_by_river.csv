@@ -1,0 +1,7 @@
+river,n_years_total,n_core_years,n_high_conf_years,n_sensitivity_years,n_excluded_years,annual_flux_min_core,annual_flux_median_core,annual_flux_max_core,caveat_summary
+Kolyma,26,19,19,5,2,0.5157002814028073,0.8083983597846045,1.2622504898001543,outside_core:4;coverage_lt_0_95:0;low_conf_flux_ge_0_25:2;excluded:2
+Lena,26,22,24,3,1,4.423662754833697,6.553555045054269,7.486992388815694,outside_core:3;coverage_lt_0_95:0;low_conf_flux_ge_0_25:0;excluded:1
+Mackenzie,26,22,21,4,0,0.781065014076653,1.4994197709838049,2.193086665294724,outside_core:4;coverage_lt_0_95:1;low_conf_flux_ge_0_25:0;excluded:0
+Ob,26,22,20,3,1,2.721498794319929,3.949965746338033,5.771512611062653,outside_core:3;coverage_lt_0_95:0;low_conf_flux_ge_0_25:1;excluded:1
+Yenisey,26,14,7,12,0,2.542233450173625,3.945792241487998,4.925728616807294,outside_core:4;coverage_lt_0_95:0;low_conf_flux_ge_0_25:11;excluded:0
+Yukon,26,22,24,2,2,0.9354817786977866,1.3742418723100975,1.8696873336400528,outside_core:2;coverage_lt_0_95:0;low_conf_flux_ge_0_25:0;excluded:2
