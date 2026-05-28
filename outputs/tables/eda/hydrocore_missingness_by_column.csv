@@ -1,0 +1,9 @@
+column,nonmissing_count,missing_count,missing_rate,flag_missing_rate_gt_0_25
+Q_m3s,545,2,0.003656307129798903,False
+temperature_2m_C,513,34,0.062157221206581355,False
+positive_degree_day_Cday,513,34,0.062157221206581355,False
+snow_cover_fraction,390,157,0.2870201096892139,True
+snow_depletion_rate_7d,329,218,0.39853747714808047,True
+surface_runoff_m,513,34,0.062157221206581355,False
+sin_doy,547,0,0.0,False
+cos_doy,547,0,0.0,False

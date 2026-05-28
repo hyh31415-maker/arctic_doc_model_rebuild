@@ -1,0 +1,14 @@
+scope,required_data,available_rows,n_rivers,n_years,minimum_threshold_met,recommended_for_phase_3,caveat
+season_only_baseline,DOC + season terms,547,6,21,True,True,Descriptive seasonal baseline only after EDA.
+q_season_baseline,DOC + Q + season terms,545,6,21,True,True,No model fitted in EDA phase.
+hydroclimate_complete_case,DOC + Q + hydroclimate complete cases,325,6,21,False,True,Complete-case analysis may change sample composition.
+hydroclimate_missingness_aware,DOC + Q + hydroclimate with missingness strategy,547,6,21,True,True,Requires explicit missingness policy before fitting.
+river_effects_model,DOC + predictors + river grouping,547,6,21,True,True,Only six rivers; partial pooling may be useful later.
+leave_one_year_out_cv,multiple years per river,547,6,21,True,True,Temporal folds may be uneven by river.
+leave_one_river_out_cv,six river groups,547,6,21,True,False,High-risk extrapolation with only six river units.
+optical_3d_any_sensor,3-day optical matched subset,374,6,21,True,True,"Sensitivity scope, not primary baseline."
+optical_3d_hls_only,3-day HLS optical subset,144,6,21,True,True,Sensor-specific sensitivity only.
+optical_3d_landsat_only,3-day Landsat optical subset,184,6,21,True,True,Sensor-specific sensitivity only.
+optical_3d_sentinel2_only,3-day Sentinel-2 optical subset,46,6,21,False,False,Small subset; likely underpowered.
+basin_context_sensitivity,basin context matrix,547,6,21,True,False,Only six river-level basin units; use sensitivity framing.
+daily_prediction_grid_ready,daily x-only prediction grid,52594,6,21,True,True,Grid is x-only; no DOC predictions generated now.

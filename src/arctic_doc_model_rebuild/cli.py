@@ -34,6 +34,16 @@ def report_command(args: argparse.Namespace) -> int:
     return 0
 
 
+def run_eda_command(args: argparse.Namespace) -> int:
+    from .eda import run_eda
+
+    result = run_eda()
+    print(f"EDA report written to {result.report_path}.")
+    print(f"EDA tables generated: {len(result.table_paths)}")
+    print(f"EDA figures generated: {len(result.figure_paths)}")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="arctic-doc-model", description="Arctic DOC model rebuild data contract tools.")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -43,6 +53,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     subparsers.add_parser("summarize-gold-data", help="Summarize frozen gold inputs without modeling.")
     subparsers.add_parser("data-contract-report", help="Write the gold data contract report without modeling.")
+    subparsers.add_parser("run-eda", help="Run descriptive EDA on frozen gold data without model training.")
     return parser
 
 
@@ -55,6 +66,8 @@ def main(argv: Iterable[str] | None = None) -> int:
         return summarize_command(args)
     if args.command == "data-contract-report":
         return report_command(args)
+    if args.command == "run-eda":
+        return run_eda_command(args)
     parser.error(f"Unknown command: {args.command}")
     return 2
 

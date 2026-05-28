@@ -1,0 +1,11 @@
+attribute_name,source_field,attribute_category,model_use,mechanism_use,needs_area_weighted_refinement,candidate_reason,warning
+lka_pc_sse,lka_pc_sse_mean,water_lake,True,True,True,Interpretable basin hydrology/physiography candidate; only 6 river-level units exist.,Candidate list only; no model fitting performed.
+lka_pc_sse,lka_pc_sse_mean,water_lake,True,True,True,Interpretable basin hydrology/physiography candidate; only 6 river-level units exist.,Candidate list only; no model fitting performed.
+lka_pc_sse,lka_pc_sse_mean,water_lake,True,True,True,Interpretable basin hydrology/physiography candidate; only 6 river-level units exist.,Candidate list only; no model fitting performed.
+lka_pc_sse,lka_pc_sse_mean,water_lake,True,True,True,Interpretable basin hydrology/physiography candidate; only 6 river-level units exist.,Candidate list only; no model fitting performed.
+lka_pc_sse,lka_pc_sse_mean,water_lake,True,True,True,Interpretable basin hydrology/physiography candidate; only 6 river-level units exist.,Candidate list only; no model fitting performed.
+lka_pc_sse,lka_pc_sse_mean,water_lake,True,True,True,Interpretable basin hydrology/physiography candidate; only 6 river-level units exist.,Candidate list only; no model fitting performed.
+lka_pc_use,lka_pc_use_mean,water_lake,True,True,True,Interpretable basin hydrology/physiography candidate; only 6 river-level units exist.,Candidate list only; no model fitting performed.
+lka_pc_use,lka_pc_use_mean,water_lake,True,True,True,Interpretable basin hydrology/physiography candidate; only 6 river-level units exist.,Candidate list only; no model fitting performed.
+lka_pc_use,lka_pc_use_mean,water_lake,True,True,True,Interpretable basin hydrology/physiography candidate; only 6 river-level units exist.,Candidate list only; no model fitting performed.
+lka_pc_use,lka_pc_use_mean,water_lake,True,True,True,Interpretable basin hydrology/physiography candidate; only 6 river-level units exist.,Candidate list only; no model fitting performed.

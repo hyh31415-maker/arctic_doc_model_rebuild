@@ -1,6 +1,6 @@
 # Gold Data Contract Report
 
-Generated: 2026-05-28T06:06:07Z
+Generated: 2026-05-28T06:19:06Z
 
 - freeze_id: `data_freeze_gold_20260526_v1`
 - source_repo: `hyh31415-maker/arctic_doc_data_audit`

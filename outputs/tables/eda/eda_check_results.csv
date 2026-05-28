@@ -1,0 +1,6 @@
+check_name,passed,message
+gold_contract_ok,True,Gold contract verified before EDA.
+schema_checks_ok,True,Schema and leakage checks passed before EDA.
+no_model_output_dirs,True,[]
+no_model_binaries,True,model_binary_count=0
+figures_generated_or_optional,True,figures_generated=10

@@ -1,0 +1,11 @@
+metric,category,value
+curated_attributes,all,240
+model_use_true,all,174
+mechanism_use_true,all,174
+needs_area_weighted_refinement,all,240
+wide_candidate_columns,all,29
+attributes_by_category,hydrology,96
+attributes_by_category,other,66
+attributes_by_category,physiography,60
+attributes_by_category,water_lake,18
+excluded_from_modeling,all,66

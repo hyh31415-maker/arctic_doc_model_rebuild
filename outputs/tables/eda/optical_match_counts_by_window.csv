@@ -1,0 +1,8 @@
+table_name,window,row_count,unique_labels,rivers_represented,years_represented,sensors_represented,median_abs_days_offset,p90_abs_days_offset,median_valid_water_pixels
+training_matrix_optical_matched_0d.csv,0d,188,188,6,18,3,0.0,0.0,0.0
+training_matrix_optical_matched_1d.csv,1d,297,297,6,19,3,0.0,1.0,0.0
+training_matrix_optical_matched_3d.csv,3d,374,374,6,21,3,0.0,2.0,0.0
+training_matrix_optical_matched_7d.csv,7d,420,420,6,21,3,1.0,4.0,0.0
+training_matrix_optical_matched_3d_hls.csv,3d_hls,144,144,6,9,1,0.0,1.0,0.0
+training_matrix_optical_matched_3d_landsat.csv,3d_landsat,184,184,6,17,1,1.0,3.0,81.5
+training_matrix_optical_matched_3d_sentinel2.csv,3d_sentinel2,46,46,6,7,1,0.0,1.0,539.0

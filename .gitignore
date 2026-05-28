@@ -4,7 +4,9 @@ data/
 outputs/models/
 outputs/predictions/
 outputs/flux/
-outputs/figures/
+outputs/figures/*
+!outputs/figures/eda/
+!outputs/figures/eda/*.png
 *.joblib
 *.pkl
 *.pickle

@@ -66,3 +66,15 @@ $env:ARCTIC_DOC_GOLD_DIR="D:/Hao/Desktop/冰冻圈水文/北极大河/arctic_doc
 - `outputs/tables/gold_matrix_missingness.csv`
 - `outputs/tables/gold_matrix_by_river.csv`
 - `outputs/tables/gold_matrix_by_year.csv`
+
+## EDA Phase
+
+```powershell
+python -m arctic_doc_model_rebuild.cli verify-gold-data
+python -m arctic_doc_model_rebuild.cli run-eda
+python -m pytest
+```
+
+EDA writes descriptive reports, tables, and lightweight figures under `outputs/reports/eda/`, `outputs/tables/eda/`, and `outputs/figures/eda/`.
+
+EDA does not train models, does not generate DOC predictions, and does not generate flux.

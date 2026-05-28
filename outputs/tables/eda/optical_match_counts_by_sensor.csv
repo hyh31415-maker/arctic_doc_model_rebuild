@@ -1,0 +1,16 @@
+table_name,window,sensor,row_count,unique_labels,median_abs_days_offset
+training_matrix_optical_matched_0d.csv,0d,HLS,98,98,0.0
+training_matrix_optical_matched_0d.csv,0d,Landsat,54,54,0.0
+training_matrix_optical_matched_0d.csv,0d,Sentinel-2,36,36,0.0
+training_matrix_optical_matched_1d.csv,1d,HLS,137,137,0.0
+training_matrix_optical_matched_1d.csv,1d,Landsat,115,115,1.0
+training_matrix_optical_matched_1d.csv,1d,Sentinel-2,45,45,0.0
+training_matrix_optical_matched_3d.csv,3d,HLS,144,144,0.0
+training_matrix_optical_matched_3d.csv,3d,Landsat,184,184,1.0
+training_matrix_optical_matched_3d.csv,3d,Sentinel-2,46,46,0.0
+training_matrix_optical_matched_7d.csv,7d,HLS,147,147,0.0
+training_matrix_optical_matched_7d.csv,7d,Landsat,226,226,1.0
+training_matrix_optical_matched_7d.csv,7d,Sentinel-2,47,47,0.0
+training_matrix_optical_matched_3d_hls.csv,3d_hls,HLS,144,144,0.0
+training_matrix_optical_matched_3d_landsat.csv,3d_landsat,Landsat,184,184,1.0
+training_matrix_optical_matched_3d_sentinel2.csv,3d_sentinel2,Sentinel-2,46,46,0.0
