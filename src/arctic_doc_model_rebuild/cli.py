@@ -62,6 +62,24 @@ def baseline_report_command(args: argparse.Namespace) -> int:
     return 0
 
 
+def run_baseline_refinement_command(args: argparse.Namespace) -> int:
+    from .modeling.refinement import run_baseline_refinement
+
+    result = run_baseline_refinement()
+    print(f"Baseline refinement report written to {result['report']}.")
+    print(f"Baseline refinement tables generated: {len(result['tables'])}")
+    print(f"Baseline refinement figures generated: {len(result['figures'])}")
+    return 0
+
+
+def baseline_refinement_report_command(args: argparse.Namespace) -> int:
+    from .modeling.refinement import write_baseline_refinement_report
+
+    report_path = write_baseline_refinement_report()
+    print(f"Baseline refinement report written to {report_path}.")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="arctic-doc-model", description="Arctic DOC model rebuild data contract tools.")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -74,6 +92,8 @@ def build_parser() -> argparse.ArgumentParser:
     subparsers.add_parser("run-eda", help="Run descriptive EDA on frozen gold data without model training.")
     subparsers.add_parser("run-baseline-models", help="Train validation-only baseline DOC concentration models.")
     subparsers.add_parser("baseline-report", help="Rewrite the baseline model report from existing baseline tables.")
+    subparsers.add_parser("run-baseline-refinement", help="Run validation-only same-sample baseline refinement diagnostics.")
+    subparsers.add_parser("baseline-refinement-report", help="Rewrite the baseline refinement report from existing refinement tables.")
     return parser
 
 
@@ -92,6 +112,10 @@ def main(argv: Iterable[str] | None = None) -> int:
         return run_baseline_models_command(args)
     if args.command == "baseline-report":
         return baseline_report_command(args)
+    if args.command == "run-baseline-refinement":
+        return run_baseline_refinement_command(args)
+    if args.command == "baseline-refinement-report":
+        return baseline_refinement_report_command(args)
     parser.error(f"Unknown command: {args.command}")
     return 2
 

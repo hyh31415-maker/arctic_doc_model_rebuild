@@ -1,0 +1,5 @@
+feature_set,model_id,target_scale
+F3_q_season_river_fixed,ridge_alpha_1,raw
+F6_reduced_hydroclimate_river_fixed,ridge_alpha_1,raw
+F6_reduced_hydroclimate_river_fixed,ridge_alpha_10,raw
+F6_reduced_hydroclimate_river_fixed,ridge_alpha_1,log

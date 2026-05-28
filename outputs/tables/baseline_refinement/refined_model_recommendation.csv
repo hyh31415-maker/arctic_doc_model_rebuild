@@ -1,0 +1,5 @@
+recommendation_type,feature_set,model_id,target_scale,validation_basis,rmse,mae,recommendation,reason
+recommended_primary_baseline,F3_q_season_river_fixed,ridge_alpha_1,raw,same_sample_leave_one_year_out,2.2420822729715915,1.668080954460471,primary,F6 same-sample improvement over F3 is tiny; choose simpler Q+season+river fixed baseline.
+recommended_hydroclimate_extension,F6_reduced_hydroclimate_river_fixed,ridge_alpha_1,raw,same_sample_leave_one_year_out,2.2407770032345224,1.6649203993655768,hydroclimate_extension,"F6 vs F3 same-sample delta RMSE=0.001, MAE=0.003."
+recommended_sensitivity_only,F6_reduced_hydroclimate_river_fixed,ridge_alpha_1,log,log_target_leave_one_year_out,2.2159252904772724,1.56283545754769,sensitivity_candidate,Best log-target result improves both RMSE and MAE in mg C/L; inspect residual bias before promoting.
+not_recommended,leave_one_river_out_winner,,raw,leave_one_river_out,,,not_primary,LORO remains a stress test with six rivers and unseen river fixed-effect categories; do not use as primary ranking.

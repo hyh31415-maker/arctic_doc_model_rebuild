@@ -9,6 +9,8 @@ outputs/figures/*
 !outputs/figures/eda/*.png
 !outputs/figures/baseline/
 !outputs/figures/baseline/*.png
+!outputs/figures/baseline_refinement/
+!outputs/figures/baseline_refinement/*.png
 *.joblib
 *.pkl
 *.pickle
