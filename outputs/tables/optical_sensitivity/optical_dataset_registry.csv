@@ -1,0 +1,8 @@
+dataset_id,table_name,window,sensor_scope,primary_window,primary_sensor_check,underpowered_threshold,row_count,n_rivers,n_years,n_sensors,rows_with_any_optical_band,median_abs_days_offset,median_pct_valid_water_pixels,min_same_sample_n,max_same_sample_n,underpowered_feature_sets
+any_sensor_0d,training_matrix_optical_matched_0d.csv,0d,any_sensor,False,False,60,188,6,18,3,76,0.0,0.0,76,188,0
+any_sensor_1d,training_matrix_optical_matched_1d.csv,1d,any_sensor,False,False,60,297,6,19,3,121,0.0,0.0,121,297,0
+any_sensor_3d,training_matrix_optical_matched_3d.csv,3d,any_sensor,True,False,60,374,6,21,3,152,0.0,0.0,152,374,0
+any_sensor_7d,training_matrix_optical_matched_7d.csv,7d,any_sensor,False,False,60,420,6,21,3,170,1.0,0.0,170,420,0
+hls_3d,training_matrix_optical_matched_3d_hls.csv,3d,hls,False,True,60,144,6,9,1,19,0.0,0.0,19,144,3
+landsat_3d,training_matrix_optical_matched_3d_landsat.csv,3d,landsat,False,True,60,184,6,17,1,97,1.0,0.0439798377572227,97,184,0
+sentinel2_3d,training_matrix_optical_matched_3d_sentinel2.csv,3d,sentinel2,False,True,60,46,6,7,1,36,0.0,0.07944187924043955,36,46,4

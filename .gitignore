@@ -11,6 +11,8 @@ outputs/figures/*
 !outputs/figures/baseline/*.png
 !outputs/figures/baseline_refinement/
 !outputs/figures/baseline_refinement/*.png
+!outputs/figures/optical_sensitivity/
+!outputs/figures/optical_sensitivity/*.png
 *.joblib
 *.pkl
 *.pickle

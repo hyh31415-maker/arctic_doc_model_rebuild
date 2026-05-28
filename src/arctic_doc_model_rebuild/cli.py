@@ -100,6 +100,24 @@ def baseline_final_report_command(args: argparse.Namespace) -> int:
     return 0
 
 
+def run_optical_sensitivity_command(args: argparse.Namespace) -> int:
+    from .modeling.optical_sensitivity import run_optical_sensitivity
+
+    result = run_optical_sensitivity()
+    print(f"Optical sensitivity report written to {result['report']}.")
+    print(f"Optical sensitivity tables generated: {len(result['tables'])}")
+    print(f"Optical sensitivity figures generated: {len(result['figures'])}")
+    return 0
+
+
+def optical_sensitivity_report_command(args: argparse.Namespace) -> int:
+    from .modeling.optical_sensitivity import write_optical_report_from_tables
+
+    report_path = write_optical_report_from_tables()
+    print(f"Optical sensitivity report written to {report_path}.")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="arctic-doc-model", description="Arctic DOC model rebuild data contract tools.")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -116,6 +134,8 @@ def build_parser() -> argparse.ArgumentParser:
     subparsers.add_parser("baseline-refinement-report", help="Rewrite the baseline refinement report from existing refinement tables.")
     subparsers.add_parser("finalize-baseline", help="Finalize the baseline DOC concentration model decision without production prediction.")
     subparsers.add_parser("baseline-final-report", help="Rewrite the baseline final report and next-phase handoff.")
+    subparsers.add_parser("run-optical-sensitivity", help="Run validation-only optical sensitivity diagnostics against the finalized F3 baseline.")
+    subparsers.add_parser("optical-sensitivity-report", help="Rewrite the optical sensitivity report from existing optical sensitivity tables.")
     return parser
 
 
@@ -142,6 +162,10 @@ def main(argv: Iterable[str] | None = None) -> int:
         return finalize_baseline_command(args)
     if args.command == "baseline-final-report":
         return baseline_final_report_command(args)
+    if args.command == "run-optical-sensitivity":
+        return run_optical_sensitivity_command(args)
+    if args.command == "optical-sensitivity-report":
+        return optical_sensitivity_report_command(args)
     parser.error(f"Unknown command: {args.command}")
     return 2
 

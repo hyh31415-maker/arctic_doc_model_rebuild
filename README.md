@@ -111,3 +111,14 @@ python -m pytest
 ```
 
 Baseline finalization freezes the selected validation comparator as `F3_q_season_river_fixed + ridge_alpha_1`, writes model decision tables and YAML specs, and hands off to optical sensitivity. It does not train new model families, does not use optical or basin matrices, and does not generate production daily DOC prediction or flux.
+
+## Optical Sensitivity Phase
+
+```powershell
+python -m arctic_doc_model_rebuild.cli verify-gold-data
+python -m arctic_doc_model_rebuild.cli run-optical-sensitivity
+python -m arctic_doc_model_rebuild.cli optical-sensitivity-report
+python -m pytest
+```
+
+Optical sensitivity tests whether satellite optical proxy variables improve the finalized `F3_q_season_river_fixed + ridge_alpha_1` baseline on identical optical-matched subsets. It trains validation-only DOC concentration diagnostics, does not read the daily prediction grid or basin context matrices, and does not generate production daily DOC prediction or flux.
