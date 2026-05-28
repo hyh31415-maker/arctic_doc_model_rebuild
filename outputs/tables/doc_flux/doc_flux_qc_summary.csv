@@ -1,0 +1,11 @@
+qc_item,status,value,notes
+daily_prediction_input_rows,true,52594,Existing guarded daily DOC predictions were used; prediction grid was not reread.
+daily_flux_rows,true,51703,Rows with valid Q and DOC prediction.
+input_flux_readiness_status,true_with_caveats,true_with_caveats,Carried from daily DOC prediction phase.
+missing_flux_rows,true_with_caveats,891,Rows retained in missing-row audit; no imputation performed.
+minimum_annual_coverage_rate,false,0.0,Annual expected days are based on the daily DOC prediction table span.
+maximum_fraction_flux_from_low_confidence_days,false,0.4615561986332222,Low confidence is driven by logQ/doy extrapolation or point clipping.
+range_flag_rows,true_with_caveats,7356,Flags only; no rows are dropped.
+discharge_uncertainty_propagated,false,false,Flux intervals propagate DOC concentration empirical residual intervals only.
+new_doc_model_trained,false,false,No model fitting or refitting is performed in this phase.
+ready_for_trend_or_snowmelt_analysis,true_with_caveats,true_with_caveats,Proceed only with caveats if status is true_with_caveats; May-July is provisional.

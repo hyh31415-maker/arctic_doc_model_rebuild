@@ -21,6 +21,8 @@ outputs/figures/*
 !outputs/figures/bias_refinement/*.png
 !outputs/figures/daily_doc_prediction/
 !outputs/figures/daily_doc_prediction/*.png
+!outputs/figures/doc_flux/
+!outputs/figures/doc_flux/*.png
 *.joblib
 *.pkl
 *.pickle

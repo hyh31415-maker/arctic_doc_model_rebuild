@@ -48,10 +48,12 @@ def test_no_production_predictions(bias_refinement_result) -> None:
 def test_no_flux_outputs(bias_refinement_result) -> None:
     root = project_root()
     assert not (root / "outputs" / "flux").exists()
+    allowed_doc_flux_dir = root / "outputs" / "tables" / "doc_flux"
     forbidden = [
         item
         for item in (root / "outputs").rglob("*")
         if item.is_file()
+        and allowed_doc_flux_dir not in item.parents
         and (item.name.lower() in {"daily_flux.csv", "annual_flux.csv", "snowmelt_flux.csv"} or item.name.lower().endswith("_flux.csv"))
     ]
     assert forbidden == []

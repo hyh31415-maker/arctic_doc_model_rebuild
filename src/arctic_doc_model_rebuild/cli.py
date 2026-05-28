@@ -199,6 +199,24 @@ def daily_doc_prediction_report_command(args: argparse.Namespace) -> int:
     return 0
 
 
+def run_doc_flux_command(args: argparse.Namespace) -> int:
+    from .flux.flux_calculation import run_doc_flux
+
+    result = run_doc_flux()
+    print(f"DOC flux report written to {result['report']}.")
+    print(f"DOC flux tables generated: {len(result['tables'])}")
+    print(f"DOC flux figures generated: {len(result['figures'])}")
+    return 0
+
+
+def doc_flux_report_command(args: argparse.Namespace) -> int:
+    from .flux.flux_reports import write_doc_flux_report
+
+    report_path = write_doc_flux_report()
+    print(f"DOC flux report written to {report_path}.")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="arctic-doc-model", description="Arctic DOC model rebuild data contract tools.")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -226,6 +244,8 @@ def build_parser() -> argparse.ArgumentParser:
     subparsers.add_parser("freeze-production-candidate", help="Freeze the refined production candidate DOC concentration model spec.")
     subparsers.add_parser("run-daily-doc-prediction", help="Generate guarded production daily DOC concentration predictions without flux.")
     subparsers.add_parser("daily-doc-prediction-report", help="Rewrite the daily DOC prediction report from existing tables.")
+    subparsers.add_parser("run-doc-flux", help="Calculate guarded DOC flux from existing daily DOC predictions without retraining.")
+    subparsers.add_parser("doc-flux-report", help="Rewrite the guarded DOC flux report from existing flux tables.")
     return parser
 
 
@@ -274,6 +294,10 @@ def main(argv: Iterable[str] | None = None) -> int:
         return run_daily_doc_prediction_command(args)
     if args.command == "daily-doc-prediction-report":
         return daily_doc_prediction_report_command(args)
+    if args.command == "run-doc-flux":
+        return run_doc_flux_command(args)
+    if args.command == "doc-flux-report":
+        return doc_flux_report_command(args)
     parser.error(f"Unknown command: {args.command}")
     return 2
 

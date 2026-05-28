@@ -167,3 +167,14 @@ python -m pytest
 ```
 
 This phase freezes the refined `R4_river_specific_Q_and_season + linear_regression` production candidate, fits it on eligible hydrocore training rows, and generates guarded daily DOC concentration predictions from `prediction_grid_daily_hydrocore.csv`. It attaches empirical validation-residual intervals and writes flux-readiness diagnostics, but it does not calculate DOC flux or create daily/annual/snowmelt flux products.
+
+## Guarded DOC Flux Calculation Phase
+
+```powershell
+python -m arctic_doc_model_rebuild.cli verify-gold-data
+python -m arctic_doc_model_rebuild.cli run-doc-flux
+python -m arctic_doc_model_rebuild.cli doc-flux-report
+python -m pytest
+```
+
+This phase calculates guarded daily and annual DOC flux from the existing guarded daily DOC concentration prediction table. It does not retrain models, does not regenerate DOC predictions, does not modify gold data, and does not read optical/basin/lab features. Flux intervals propagate DOC concentration empirical residual intervals only; discharge uncertainty is not propagated. May-July flux is provisional and is not a final snowmelt contribution estimate.

@@ -10,6 +10,12 @@ from ..paths import path
 
 FORBIDDEN_OUTPUT_DIRS = [path("outputs", "predictions"), path("outputs", "flux")]
 FORBIDDEN_FILE_PATTERNS = ["daily_flux", "annual_flux", "snowmelt_flux"]
+ALLOWED_DOC_FLUX_DIR = path("outputs", "tables", "doc_flux")
+ALLOWED_DOC_FLUX_OUTPUT_DIRS = [
+    path("outputs", "tables", "doc_flux"),
+    path("outputs", "reports", "doc_flux"),
+    path("outputs", "figures", "doc_flux"),
+]
 ALLOWED_DOC_MODEL_ARTIFACTS = {
     "production_candidate_r4_daily_doc_model.joblib",
     "production_candidate_r4_daily_doc_model_metadata.json",
@@ -33,11 +39,12 @@ def assert_no_forbidden_outputs() -> None:
             if not item.is_file():
                 continue
             lower = item.name.lower()
+            allowed_doc_flux_output = any(directory in item.parents for directory in ALLOWED_DOC_FLUX_OUTPUT_DIRS)
             if item.suffix.lower() in {".joblib", ".pkl", ".pickle"} and item.name not in ALLOWED_DOC_MODEL_ARTIFACTS:
                 forbidden_files.append(item)
-            if any(pattern in lower for pattern in FORBIDDEN_FILE_PATTERNS):
+            if any(pattern in lower for pattern in FORBIDDEN_FILE_PATTERNS) and not allowed_doc_flux_output:
                 forbidden_files.append(item)
-            if lower.endswith("_flux.csv"):
+            if lower.endswith("_flux.csv") and ALLOWED_DOC_FLUX_DIR not in item.parents:
                 forbidden_files.append(item)
             if "outputs\\models" in str(item).lower() or "outputs/models" in str(item).lower():
                 if item.name not in ALLOWED_DOC_MODEL_ARTIFACTS:
