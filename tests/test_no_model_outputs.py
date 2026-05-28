@@ -3,6 +3,7 @@ from __future__ import annotations
 import pandas as pd
 
 from arctic_doc_model_rebuild import cli
+from arctic_doc_model_rebuild.modeling.diagnostics import ALLOWED_DOC_MODEL_ARTIFACTS
 from arctic_doc_model_rebuild.paths import project_root
 
 
@@ -39,12 +40,14 @@ def test_verify_command_does_not_create_model_prediction_or_flux_dirs(monkeypatc
     monkeypatch.setattr(cli, "write_verification_outputs", lambda: (verification, schema))
     assert cli.main(["verify-gold-data"]) == 0
     root = project_root()
-    assert not (root / "outputs" / "models").exists()
+    model_dir = root / "outputs" / "models"
+    if model_dir.exists():
+        assert {item.name for item in model_dir.iterdir() if item.is_file()}.issubset(ALLOWED_DOC_MODEL_ARTIFACTS)
     assert not (root / "outputs" / "predictions").exists()
     assert not (root / "outputs" / "flux").exists()
     forbidden = [
         item
         for item in root.rglob("*")
-        if item.is_file() and item.suffix.lower() in {".joblib", ".pkl", ".pickle"}
+        if item.is_file() and item.suffix.lower() in {".joblib", ".pkl", ".pickle"} and item.name not in ALLOWED_DOC_MODEL_ARTIFACTS
     ]
     assert forbidden == []

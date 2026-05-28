@@ -1,0 +1,7 @@
+decision_item,status,evidence,recommendation,blocking_for_flux
+daily_doc_prediction_generated,true,predicted_rows=51703,Use only as DOC concentration input to a separate flux phase.,False
+prediction_coverage_acceptable,true_with_caveats,minimum_river_coverage=0.9515,Review missing predictor rows before flux.,False
+range_flags_acceptable,true,severe_range_flag_rows=0,No severe range flags.,False
+extrapolation_flags_acceptable,true_with_caveats,extrapolation_flag_rows=14896,Carry extrapolation flags into flux uncertainty.,False
+intervals_available,true,interval_rows=7,Use empirical residual intervals as concentration uncertainty input.,False
+ready_for_flux_calculation,true_with_caveats,No flux was calculated in this phase.,Proceed to flux only with concentration caveats and uncertainty intervals.,False

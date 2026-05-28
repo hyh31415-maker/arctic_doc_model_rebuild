@@ -77,8 +77,6 @@ def test_refinement_no_gold_data_modified() -> None:
 def test_refinement_no_production_predictions(refinement_result) -> None:
     root = project_root()
     assert not (root / "outputs" / "predictions").exists()
-    forbidden = [item for item in root.rglob("*daily_doc_prediction*") if item.is_file()]
-    assert forbidden == []
     for name in ["same_sample_ablation_cv_predictions.csv", "log_target_cv_predictions.csv"]:
         frame = pd.read_csv(REFINEMENT_TABLE_DIR / name)
         assert frame["is_cv_prediction"].astype(str).str.lower().isin({"true", "1"}).all()
@@ -91,7 +89,7 @@ def test_refinement_no_flux_outputs(refinement_result) -> None:
     forbidden_names = [
         item
         for item in (root / "outputs").rglob("*")
-        if item.is_file() and ("flux" in item.name.lower() or item.name.lower().endswith("_flux.csv"))
+        if item.is_file() and item.name.lower() in {"daily_flux.csv", "annual_flux.csv", "snowmelt_flux.csv"}
     ]
     assert forbidden_names == []
     table_mentions = []

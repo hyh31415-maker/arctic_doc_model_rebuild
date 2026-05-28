@@ -155,3 +155,15 @@ python -m pytest
 ```
 
 Bias-aware refinement tests interpretable nonlinear, river-interaction, robust-regression, and log-target sensitivity variants against the finalized F3 baseline. It remains validation-only, reads only `training_matrix_hydrocore.csv` as model input, does not load prediction grids or optical/basin matrices, and does not generate production daily DOC prediction or flux.
+
+## Guarded Daily DOC Prediction Phase
+
+```powershell
+python -m arctic_doc_model_rebuild.cli verify-gold-data
+python -m arctic_doc_model_rebuild.cli freeze-production-candidate
+python -m arctic_doc_model_rebuild.cli run-daily-doc-prediction
+python -m arctic_doc_model_rebuild.cli daily-doc-prediction-report
+python -m pytest
+```
+
+This phase freezes the refined `R4_river_specific_Q_and_season + linear_regression` production candidate, fits it on eligible hydrocore training rows, and generates guarded daily DOC concentration predictions from `prediction_grid_daily_hydrocore.csv`. It attaches empirical validation-residual intervals and writes flux-readiness diagnostics, but it does not calculate DOC flux or create daily/annual/snowmelt flux products.

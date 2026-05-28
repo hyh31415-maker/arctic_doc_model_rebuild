@@ -1,7 +1,7 @@
 .env
 configs/local_paths.yaml
 data/
-outputs/models/
+outputs/models/*
 outputs/predictions/
 outputs/flux/
 outputs/figures/*
@@ -19,9 +19,14 @@ outputs/figures/*
 !outputs/figures/concentration_uncertainty/*.png
 !outputs/figures/bias_refinement/
 !outputs/figures/bias_refinement/*.png
+!outputs/figures/daily_doc_prediction/
+!outputs/figures/daily_doc_prediction/*.png
 *.joblib
 *.pkl
 *.pickle
+!outputs/models/
+!outputs/models/production_candidate_r4_daily_doc_model.joblib
+!outputs/models/production_candidate_r4_daily_doc_model_metadata.json
 __pycache__/
 *.py[cod]
 .pytest_cache/

@@ -11,6 +11,7 @@ from arctic_doc_model_rebuild.modeling.concentration_uncertainty import (
     UNCERTAINTY_TABLE_DIR,
     run_concentration_uncertainty,
 )
+from arctic_doc_model_rebuild.modeling.diagnostics import ALLOWED_DOC_MODEL_ARTIFACTS
 from arctic_doc_model_rebuild.paths import project_root
 
 
@@ -61,7 +62,6 @@ def test_production_readiness_decision_exists(uncertainty_result) -> None:
 def test_no_production_predictions(uncertainty_result) -> None:
     root = project_root()
     assert not (root / "outputs" / "predictions").exists()
-    assert [item for item in root.rglob("*daily_doc_prediction*") if item.is_file()] == []
 
 
 def test_no_flux_outputs(uncertainty_result) -> None:
@@ -144,5 +144,9 @@ def test_roi_qc_caveat_carried_forward(uncertainty_result) -> None:
 
 def test_no_model_binary_artifacts(uncertainty_result) -> None:
     root = project_root()
-    forbidden = [item for item in root.rglob("*") if item.is_file() and item.suffix.lower() in {".joblib", ".pkl", ".pickle"}]
+    forbidden = [
+        item
+        for item in root.rglob("*")
+        if item.is_file() and item.suffix.lower() in {".joblib", ".pkl", ".pickle"} and item.name not in ALLOWED_DOC_MODEL_ARTIFACTS
+    ]
     assert forbidden == []

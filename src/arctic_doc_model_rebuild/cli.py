@@ -172,6 +172,33 @@ def bias_aware_refinement_report_command(args: argparse.Namespace) -> int:
     return 0
 
 
+def freeze_production_candidate_command(args: argparse.Namespace) -> int:
+    from .modeling.daily_doc_prediction import freeze_production_candidate
+
+    result = freeze_production_candidate()
+    print(f"Production candidate spec written to {result['spec']}.")
+    print(f"Production candidate decision written to {result['decision']}.")
+    return 0
+
+
+def run_daily_doc_prediction_command(args: argparse.Namespace) -> int:
+    from .modeling.daily_doc_prediction import run_daily_doc_prediction
+
+    result = run_daily_doc_prediction()
+    print(f"Daily DOC prediction report written to {result['report']}.")
+    print(f"Daily DOC prediction tables generated: {len(result['tables'])}")
+    print(f"Daily DOC prediction figures generated: {len(result['figures'])}")
+    return 0
+
+
+def daily_doc_prediction_report_command(args: argparse.Namespace) -> int:
+    from .modeling.daily_doc_prediction import write_daily_doc_prediction_report
+
+    report_path = write_daily_doc_prediction_report()
+    print(f"Daily DOC prediction report written to {report_path}.")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="arctic-doc-model", description="Arctic DOC model rebuild data contract tools.")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -196,6 +223,9 @@ def build_parser() -> argparse.ArgumentParser:
     subparsers.add_parser("concentration-uncertainty-report", help="Rewrite the concentration uncertainty report from existing tables.")
     subparsers.add_parser("run-bias-aware-refinement", help="Run validation-only bias-aware concentration model refinement diagnostics.")
     subparsers.add_parser("bias-aware-refinement-report", help="Rewrite the bias-aware refinement report from existing tables.")
+    subparsers.add_parser("freeze-production-candidate", help="Freeze the refined production candidate DOC concentration model spec.")
+    subparsers.add_parser("run-daily-doc-prediction", help="Generate guarded production daily DOC concentration predictions without flux.")
+    subparsers.add_parser("daily-doc-prediction-report", help="Rewrite the daily DOC prediction report from existing tables.")
     return parser
 
 
@@ -238,6 +268,12 @@ def main(argv: Iterable[str] | None = None) -> int:
         return run_bias_aware_refinement_command(args)
     if args.command == "bias-aware-refinement-report":
         return bias_aware_refinement_report_command(args)
+    if args.command == "freeze-production-candidate":
+        return freeze_production_candidate_command(args)
+    if args.command == "run-daily-doc-prediction":
+        return run_daily_doc_prediction_command(args)
+    if args.command == "daily-doc-prediction-report":
+        return daily_doc_prediction_report_command(args)
     parser.error(f"Unknown command: {args.command}")
     return 2
 

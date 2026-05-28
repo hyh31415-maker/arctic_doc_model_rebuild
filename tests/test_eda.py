@@ -5,6 +5,7 @@ import pytest
 
 from arctic_doc_model_rebuild.eda import EDA_TABLE_DIR, run_eda
 from arctic_doc_model_rebuild.gold_contract import load_contract, require_gold_data_dir, sha256_file, table_path
+from arctic_doc_model_rebuild.modeling.diagnostics import ALLOWED_DOC_MODEL_ARTIFACTS
 from arctic_doc_model_rebuild.paths import project_root
 
 
@@ -35,13 +36,15 @@ def test_eda_tables_exist(eda_result) -> None:
 
 def test_eda_no_model_outputs(eda_result) -> None:
     root = project_root()
-    assert not (root / "outputs" / "models").exists()
+    model_dir = root / "outputs" / "models"
+    if model_dir.exists():
+        assert {item.name for item in model_dir.iterdir() if item.is_file()}.issubset(ALLOWED_DOC_MODEL_ARTIFACTS)
     assert not (root / "outputs" / "predictions").exists()
     assert not (root / "outputs" / "flux").exists()
     forbidden = [
         item
         for item in root.rglob("*")
-        if item.is_file() and item.suffix.lower() in {".joblib", ".pkl", ".pickle"}
+        if item.is_file() and item.suffix.lower() in {".joblib", ".pkl", ".pickle"} and item.name not in ALLOWED_DOC_MODEL_ARTIFACTS
     ]
     assert forbidden == []
 

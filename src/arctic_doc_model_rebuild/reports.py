@@ -10,6 +10,7 @@ from .data_loader import gold_table_file
 from .gold_contract import load_contract, resolve_gold_data_location, sha256_file, verify_all_gold_tables, verification_problem_counts
 from .paths import REPORT_DIR, TABLE_DIR, ensure_output_dirs
 from .schema_checks import issue_count, run_all_schema_checks
+from .modeling.diagnostics import ALLOWED_DOC_MODEL_ARTIFACTS
 
 
 def utc_now() -> str:
@@ -30,13 +31,13 @@ def _md_table(frame: pd.DataFrame, max_rows: int = 50) -> str:
 
 def model_output_status() -> dict[str, Any]:
     outputs = Path("outputs")
-    forbidden_dirs = [outputs / "models", outputs / "predictions", outputs / "flux"]
+    forbidden_dirs = [outputs / "predictions", outputs / "flux"]
     forbidden_files = []
     if outputs.exists():
         forbidden_files = [
             item
             for item in outputs.rglob("*")
-            if item.is_file() and item.suffix.lower() in {".joblib", ".pkl", ".pickle"}
+            if item.is_file() and item.suffix.lower() in {".joblib", ".pkl", ".pickle"} and item.name not in ALLOWED_DOC_MODEL_ARTIFACTS
         ]
     return {
         "outputs_models_exists": (outputs / "models").exists(),

@@ -7,6 +7,7 @@ import pytest
 import yaml
 
 from arctic_doc_model_rebuild.gold_contract import load_contract, require_gold_data_dir, sha256_file, table_path
+from arctic_doc_model_rebuild.modeling.diagnostics import ALLOWED_DOC_MODEL_ARTIFACTS
 from arctic_doc_model_rebuild.modeling.baseline_final import (
     BASELINE_FINAL_REPORT_PATH,
     BASELINE_FINAL_TABLE_DIR,
@@ -106,8 +107,8 @@ def test_no_predictions_or_flux_outputs(baseline_final_result) -> None:
         for item in root.rglob("*")
         if item.is_file()
         and (
-            item.name.lower() in {"daily_doc_prediction.csv", "daily_flux.csv", "annual_flux.csv", "snowmelt_flux.csv"}
-            or item.suffix.lower() in {".joblib", ".pkl", ".pickle"}
+            item.name.lower() in {"daily_flux.csv", "annual_flux.csv", "snowmelt_flux.csv"}
+            or (item.suffix.lower() in {".joblib", ".pkl", ".pickle"} and item.name not in ALLOWED_DOC_MODEL_ARTIFACTS)
         )
     ]
     assert forbidden == []

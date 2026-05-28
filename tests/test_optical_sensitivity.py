@@ -70,7 +70,6 @@ def test_cv_predictions_validation_only(optical_result) -> None:
 def test_no_production_predictions(optical_result) -> None:
     root = project_root()
     assert not (root / "outputs" / "predictions").exists()
-    assert [item for item in root.rglob("*daily_doc_prediction*") if item.is_file()] == []
 
 
 def test_no_flux_outputs(optical_result) -> None:

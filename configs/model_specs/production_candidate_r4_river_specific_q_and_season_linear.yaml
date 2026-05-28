@@ -1,0 +1,56 @@
+model_spec_id: production_candidate_r4_river_specific_q_and_season_linear
+freeze_id: data_freeze_gold_20260526_v1
+input_training_table: data/processed/gold/training_matrix_hydrocore.csv
+input_prediction_grid: data/processed/gold/prediction_grid_daily_hydrocore.csv
+target: DOC_mgC_L
+target_transform: none
+feature_set: R4_river_specific_Q_and_season
+numeric_features:
+- log_Q
+- sin_doy
+- cos_doy
+- river_x_log_Q
+- river_x_sin_doy
+- river_x_cos_doy
+expanded_numeric_features:
+- log_Q
+- sin_doy
+- cos_doy
+- Kolyma__x__log_Q
+- Lena__x__log_Q
+- Mackenzie__x__log_Q
+- Ob__x__log_Q
+- Yenisey__x__log_Q
+- Yukon__x__log_Q
+- Kolyma__x__sin_doy
+- Lena__x__sin_doy
+- Mackenzie__x__sin_doy
+- Ob__x__sin_doy
+- Yenisey__x__sin_doy
+- Yukon__x__sin_doy
+- Kolyma__x__cos_doy
+- Lena__x__cos_doy
+- Mackenzie__x__cos_doy
+- Ob__x__cos_doy
+- Yenisey__x__cos_doy
+- Yukon__x__cos_doy
+categorical_features:
+- river
+model:
+  type: LinearRegression
+validation_basis:
+- leave_one_year_out
+- river_year_groupkfold
+caveats:
+- within_six_arcticgro_rivers_only
+- no_cross_river_extrapolation
+- high_doc_bias_improved_but_caveated
+- fold_stability_caveated
+- empirical_intervals_from_cv_residuals
+excluded_features:
+- optical
+- basin_context
+- lab_optical_cdom
+- flux
+production_daily_doc_prediction_allowed: true
+flux_allowed: false

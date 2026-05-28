@@ -4,6 +4,7 @@ import pandas as pd
 import pytest
 
 from arctic_doc_model_rebuild.gold_contract import load_contract, require_gold_data_dir, sha256_file, table_path
+from arctic_doc_model_rebuild.modeling.diagnostics import ALLOWED_DOC_MODEL_ARTIFACTS
 from arctic_doc_model_rebuild.paths import project_root
 from arctic_doc_model_rebuild.roi_qc import ROI_QC_REPORT_PATH, ROI_QC_TABLE_DIR, run_roi_final_qc
 
@@ -34,7 +35,9 @@ def test_roi_qc_no_gold_data_modified() -> None:
 
 def test_roi_qc_no_model_prediction_or_flux_outputs(roi_qc_result) -> None:
     root = project_root()
-    assert not (root / "outputs" / "models").exists()
+    model_dir = root / "outputs" / "models"
+    if model_dir.exists():
+        assert {item.name for item in model_dir.iterdir() if item.is_file()}.issubset(ALLOWED_DOC_MODEL_ARTIFACTS)
     assert not (root / "outputs" / "predictions").exists()
     assert not (root / "outputs" / "flux").exists()
     forbidden = [
@@ -42,8 +45,8 @@ def test_roi_qc_no_model_prediction_or_flux_outputs(roi_qc_result) -> None:
         for item in root.rglob("*")
         if item.is_file()
         and (
-            item.name.lower() in {"daily_doc_prediction.csv", "daily_flux.csv", "annual_flux.csv", "snowmelt_flux.csv"}
-            or item.suffix.lower() in {".joblib", ".pkl", ".pickle"}
+            item.name.lower() in {"daily_flux.csv", "annual_flux.csv", "snowmelt_flux.csv"}
+            or (item.suffix.lower() in {".joblib", ".pkl", ".pickle"} and item.name not in ALLOWED_DOC_MODEL_ARTIFACTS)
         )
     ]
     assert forbidden == []

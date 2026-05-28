@@ -1,0 +1,16 @@
+{
+  "model_spec_id": "production_candidate_r4_river_specific_q_and_season_linear",
+  "model_fit_id": "production_candidate_r4_linear_fit_data_freeze_gold_20260526_v1",
+  "freeze_id": "data_freeze_gold_20260526_v1",
+  "training_rows_used": 545,
+  "prediction_rows_total": 52594,
+  "prediction_rows_generated": 51703,
+  "training_table": "data/processed/gold/training_matrix_hydrocore.csv",
+  "prediction_grid": "data/processed/gold/prediction_grid_daily_hydrocore.csv",
+  "production_candidate_not_flux_model": true,
+  "is_flux_model": false,
+  "model_artifact": "outputs/models/production_candidate_r4_daily_doc_model.joblib",
+  "model_artifact_sha256": "0698c4f9ffed6a412ba5e2b567820f4f4cd1aaaec346b3a96ae29fbc9d852aac",
+  "flux_allowed": false,
+  "created_at_utc": "2026-05-28T13:37:45Z"
+}

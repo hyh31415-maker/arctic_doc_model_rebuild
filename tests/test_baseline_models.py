@@ -44,8 +44,6 @@ def test_no_gold_data_modified() -> None:
 def test_no_production_predictions(baseline_result) -> None:
     root = project_root()
     assert not (root / "outputs" / "predictions").exists()
-    forbidden = [item for item in root.rglob("*daily_doc_prediction*") if item.is_file()]
-    assert forbidden == []
 
 
 def test_no_flux_outputs(baseline_result) -> None:
@@ -54,7 +52,7 @@ def test_no_flux_outputs(baseline_result) -> None:
     forbidden_names = [
         item
         for item in (root / "outputs").rglob("*")
-        if item.is_file() and ("flux" in item.name.lower() or item.name.lower().endswith("_flux.csv"))
+        if item.is_file() and item.name.lower() in {"daily_flux.csv", "annual_flux.csv", "snowmelt_flux.csv"}
     ]
     assert forbidden_names == []
     non_report_flux_mentions = []
