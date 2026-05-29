@@ -258,3 +258,14 @@ python -m pytest
 ```
 
 This phase decomposes existing guarded annual DOC flux into annual Q volume, annual mean DOC, flow-weighted DOC, monthly and seasonal flux fractions, and cumulative export timing diagnostics. It does not retrain models, generate new DOC predictions, recalculate daily flux, or modify gold data. Attribution is exploratory mechanism analysis, not causal proof, and discharge uncertainty is not propagated.
+
+## Freshet Control and Export Phenology Synthesis Phase
+
+```powershell
+python -m arctic_doc_model_rebuild.cli verify-gold-data
+python -m arctic_doc_model_rebuild.cli synthesize-freshet-control
+python -m arctic_doc_model_rebuild.cli freshet-control-report
+python -m pytest
+```
+
+This phase integrates existing daily flux, dynamic snowmelt-window summaries, flux attribution, export phenology, and annual trend outputs to classify DOC export regimes and diagnose whether Yukon is better interpreted as freshet-controlled or extended-season discharge-driven export. It does not retrain models, generate new DOC predictions, recalculate flux, or modify gold data. Snowmelt/freshet windows remain operational definitions, and the synthesis is exploratory rather than causal proof.

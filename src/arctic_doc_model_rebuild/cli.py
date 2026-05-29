@@ -333,6 +333,24 @@ def flux_attribution_report_command(args: argparse.Namespace) -> int:
     return 0
 
 
+def synthesize_freshet_control_command(args: argparse.Namespace) -> int:
+    from .flux.freshet_control import synthesize_freshet_control
+
+    result = synthesize_freshet_control()
+    print(f"Freshet control synthesis report written to {result['report']}.")
+    print(f"Freshet control tables generated: {len(result['tables'])}")
+    print(f"Freshet control figures generated: {len(result['figures'])}")
+    return 0
+
+
+def freshet_control_report_command(args: argparse.Namespace) -> int:
+    from .flux.freshet_control import write_freshet_control_report
+
+    report_path = write_freshet_control_report()
+    print(f"Freshet control synthesis report written to {report_path}.")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="arctic-doc-model", description="Arctic DOC model rebuild data contract tools.")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -375,6 +393,8 @@ def build_parser() -> argparse.ArgumentParser:
     subparsers.add_parser("synthesis-report", help="Rewrite the final synthesis manuscript-ready report from existing synthesis tables.")
     subparsers.add_parser("run-flux-attribution", help="Attribute existing DOC flux changes to discharge, concentration, seasonal redistribution, and export timing.")
     subparsers.add_parser("flux-attribution-report", help="Rewrite the flux attribution reports from existing attribution tables.")
+    subparsers.add_parser("synthesize-freshet-control", help="Synthesize freshet control, extended-season export, and DOC export phenology from existing outputs.")
+    subparsers.add_parser("freshet-control-report", help="Rewrite the freshet control synthesis report from existing freshet-control tables.")
     return parser
 
 
@@ -453,6 +473,10 @@ def main(argv: Iterable[str] | None = None) -> int:
         return run_flux_attribution_command(args)
     if args.command == "flux-attribution-report":
         return flux_attribution_report_command(args)
+    if args.command == "synthesize-freshet-control":
+        return synthesize_freshet_control_command(args)
+    if args.command == "freshet-control-report":
+        return freshet_control_report_command(args)
     parser.error(f"Unknown command: {args.command}")
     return 2
 

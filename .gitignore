@@ -35,6 +35,8 @@ outputs/figures/*
 !outputs/figures/final_synthesis/.gitkeep
 !outputs/figures/flux_attribution/
 !outputs/figures/flux_attribution/*.png
+!outputs/figures/freshet_control/
+!outputs/figures/freshet_control/*.png
 *.joblib
 *.pkl
 *.pickle

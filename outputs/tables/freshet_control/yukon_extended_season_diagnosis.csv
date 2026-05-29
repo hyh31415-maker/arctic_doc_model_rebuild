@@ -1,0 +1,12 @@
+diagnostic_item,status,evidence
+annual_flux_increasing,True,"slope=0.0217923713793453, p=0.0150804369764447"
+Q_volume_increasing,True,"slope=2.3798816090344443, p=0.0020853174903879"
+flow_weighted_DOC_no_detectable_trend,True,"slope=0.0307664931021726, p=0.1064746142447846"
+May_July_flux_trend_no,True,no detectable trend
+May_July_fraction_decreasing,True,detectable decreasing trend
+q75_window_flux_trend_no,True,no detectable trend
+discharge_centered_fraction_increasing,True,detectable increasing trend
+after_July_fraction_increasing,True,detectable increasing trend
+centroid_later,True,detectable increasing trend
+active_season_length_increasing,True,detectable increasing trend
+final_interpretation,True,discharge-volume-driven extended-season export expansion; regime=discharge_volume_extended_season
