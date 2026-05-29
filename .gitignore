@@ -33,6 +33,8 @@ outputs/figures/*
 !outputs/figures/snowmelt_windows/*.png
 !outputs/figures/final_synthesis/
 !outputs/figures/final_synthesis/.gitkeep
+!outputs/figures/flux_attribution/
+!outputs/figures/flux_attribution/*.png
 *.joblib
 *.pkl
 *.pickle

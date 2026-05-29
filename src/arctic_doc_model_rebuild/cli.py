@@ -314,6 +314,25 @@ def synthesis_report_command(args: argparse.Namespace) -> int:
     return 0
 
 
+def run_flux_attribution_command(args: argparse.Namespace) -> int:
+    from .flux.flux_attribution import run_flux_attribution
+
+    result = run_flux_attribution()
+    print(f"Flux attribution report written to {result['report']}.")
+    print(f"Yukon attribution report written to {result['yukon_report']}.")
+    print(f"Flux attribution tables generated: {len(result['tables'])}")
+    print(f"Flux attribution figures generated: {len(result['figures'])}")
+    return 0
+
+
+def flux_attribution_report_command(args: argparse.Namespace) -> int:
+    from .flux.flux_attribution import write_flux_attribution_report
+
+    report_path = write_flux_attribution_report()
+    print(f"Flux attribution report written to {report_path}.")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="arctic-doc-model", description="Arctic DOC model rebuild data contract tools.")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -354,6 +373,8 @@ def build_parser() -> argparse.ArgumentParser:
     subparsers.add_parser("snowmelt-window-report", help="Rewrite the hydrologic snowmelt window report from existing tables.")
     subparsers.add_parser("synthesize-results", help="Synthesize existing model, flux, trend, and snowmelt outputs into manuscript-ready tables without rerunning science steps.")
     subparsers.add_parser("synthesis-report", help="Rewrite the final synthesis manuscript-ready report from existing synthesis tables.")
+    subparsers.add_parser("run-flux-attribution", help="Attribute existing DOC flux changes to discharge, concentration, seasonal redistribution, and export timing.")
+    subparsers.add_parser("flux-attribution-report", help="Rewrite the flux attribution reports from existing attribution tables.")
     return parser
 
 
@@ -428,6 +449,10 @@ def main(argv: Iterable[str] | None = None) -> int:
         return synthesize_results_command(args)
     if args.command == "synthesis-report":
         return synthesis_report_command(args)
+    if args.command == "run-flux-attribution":
+        return run_flux_attribution_command(args)
+    if args.command == "flux-attribution-report":
+        return flux_attribution_report_command(args)
     parser.error(f"Unknown command: {args.command}")
     return 2
 

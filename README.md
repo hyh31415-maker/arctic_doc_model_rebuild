@@ -247,3 +247,14 @@ Main outputs:
 - `outputs/tables/final_synthesis/recommended_manuscript_tables.csv`
 
 Interpretation boundaries carried into the synthesis: optical reflectance is proxy evidence, not DOC observation; May-July is provisional; dynamic snowmelt/freshet windows are exploratory/interpretive; discharge uncertainty is not propagated; and the six-river ArcticGRO domain is not a full pan-Arctic DOC budget.
+
+## Flux Attribution, Seasonal Redistribution, and Export Phenology Phase
+
+```powershell
+python -m arctic_doc_model_rebuild.cli verify-gold-data
+python -m arctic_doc_model_rebuild.cli run-flux-attribution
+python -m arctic_doc_model_rebuild.cli flux-attribution-report
+python -m pytest
+```
+
+This phase decomposes existing guarded annual DOC flux into annual Q volume, annual mean DOC, flow-weighted DOC, monthly and seasonal flux fractions, and cumulative export timing diagnostics. It does not retrain models, generate new DOC predictions, recalculate daily flux, or modify gold data. Attribution is exploratory mechanism analysis, not causal proof, and discharge uncertainty is not propagated.

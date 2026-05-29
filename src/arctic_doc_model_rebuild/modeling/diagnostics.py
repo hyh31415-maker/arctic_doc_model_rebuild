@@ -30,6 +30,9 @@ ALLOWED_DOC_FLUX_OUTPUT_DIRS = [
     path("outputs", "tables", "final_synthesis"),
     path("outputs", "reports", "final_synthesis"),
     path("outputs", "figures", "final_synthesis"),
+    path("outputs", "tables", "flux_attribution"),
+    path("outputs", "reports", "flux_attribution"),
+    path("outputs", "figures", "flux_attribution"),
 ]
 ALLOWED_DOC_MODEL_ARTIFACTS = {
     "production_candidate_r4_daily_doc_model.joblib",
