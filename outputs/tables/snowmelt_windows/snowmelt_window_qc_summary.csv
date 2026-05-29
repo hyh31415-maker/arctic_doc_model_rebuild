@@ -1,0 +1,6 @@
+window_id,n_river_years,n_high_confidence,n_medium_confidence,n_low_confidence,n_fallback_used,median_window_length_days,median_window_fraction_of_annual,notes
+common_overlap_w1_w2,156,146,0,10,0,38.0,0.4414584095923979,dynamic_hydrologic_window
+discharge_centered_freshet,156,52,0,104,0,136.5,0.6776689823573336,dynamic_hydrologic_window
+fixed_may_july_reference,156,152,0,4,0,92.0,0.6232451310703927,fixed_may_july_reference_is_reference_only
+q75_peak_contiguous,156,146,0,10,0,38.0,0.44542139340728293,dynamic_hydrologic_window
+snow_depletion_assisted,156,35,93,28,110,83.0,0.573183973636932,dynamic_hydrologic_window

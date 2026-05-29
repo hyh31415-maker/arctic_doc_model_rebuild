@@ -210,3 +210,15 @@ python -m pytest
 ```
 
 This phase interprets the fixed provisional May-July DOC flux window against annual flux cohorts and annual trend results. It does not retrain models, regenerate DOC predictions, recalculate flux, or refine hydrologic snowmelt windows. May-July remains provisional and is not final snowmelt.
+
+## Hydrologic Snowmelt Window Refinement Phase
+
+```powershell
+python -m arctic_doc_model_rebuild.cli verify-gold-data
+python -m arctic_doc_model_rebuild.cli define-snowmelt-windows
+python -m arctic_doc_model_rebuild.cli run-snowmelt-window-flux
+python -m arctic_doc_model_rebuild.cli snowmelt-window-report
+python -m pytest
+```
+
+This phase defines river-year hydrologic freshet windows from daily Q and snow/hydroclimate variables, then sums existing guarded daily DOC flux into those windows. It does not retrain models, regenerate DOC predictions, recalculate daily flux, or modify gold data. Fixed May-July remains a provisional reference window.

@@ -29,6 +29,8 @@ outputs/figures/*
 !outputs/figures/annual_flux_trends/*.png
 !outputs/figures/may_july_flux/
 !outputs/figures/may_july_flux/*.png
+!outputs/figures/snowmelt_windows/
+!outputs/figures/snowmelt_windows/*.png
 *.joblib
 *.pkl
 *.pickle

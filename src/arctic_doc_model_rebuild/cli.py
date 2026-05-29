@@ -271,6 +271,32 @@ def may_july_flux_report_command(args: argparse.Namespace) -> int:
     return 0
 
 
+def define_snowmelt_windows_command(args: argparse.Namespace) -> int:
+    from .flux.snowmelt_windows import define_snowmelt_windows
+
+    result = define_snowmelt_windows()
+    print(f"Snowmelt window definitions written: {len(result['tables'])} table(s).")
+    return 0
+
+
+def run_snowmelt_window_flux_command(args: argparse.Namespace) -> int:
+    from .flux.snowmelt_window_metrics import run_snowmelt_window_flux
+
+    result = run_snowmelt_window_flux()
+    print(f"Snowmelt window report written to {result['report']}.")
+    print(f"Snowmelt window tables generated: {len(result['tables'])}")
+    print(f"Snowmelt window figures generated: {len(result['figures'])}")
+    return 0
+
+
+def snowmelt_window_report_command(args: argparse.Namespace) -> int:
+    from .flux.snowmelt_window_reports import write_snowmelt_window_report
+
+    report_path = write_snowmelt_window_report()
+    print(f"Snowmelt window report written to {report_path}.")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="arctic-doc-model", description="Arctic DOC model rebuild data contract tools.")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -306,6 +332,9 @@ def build_parser() -> argparse.ArgumentParser:
     subparsers.add_parser("annual-flux-trend-report", help="Rewrite the annual DOC flux trend report from existing trend tables.")
     subparsers.add_parser("run-may-july-flux-interpretation", help="Interpret provisional May-July DOC flux without recomputing flux.")
     subparsers.add_parser("may-july-flux-report", help="Rewrite the provisional May-July DOC flux interpretation report.")
+    subparsers.add_parser("define-snowmelt-windows", help="Define dynamic hydrologic snowmelt/freshet windows without recomputing flux.")
+    subparsers.add_parser("run-snowmelt-window-flux", help="Sum existing daily DOC flux into dynamic snowmelt windows and analyze trends.")
+    subparsers.add_parser("snowmelt-window-report", help="Rewrite the hydrologic snowmelt window report from existing tables.")
     return parser
 
 
@@ -370,6 +399,12 @@ def main(argv: Iterable[str] | None = None) -> int:
         return run_may_july_flux_interpretation_command(args)
     if args.command == "may-july-flux-report":
         return may_july_flux_report_command(args)
+    if args.command == "define-snowmelt-windows":
+        return define_snowmelt_windows_command(args)
+    if args.command == "run-snowmelt-window-flux":
+        return run_snowmelt_window_flux_command(args)
+    if args.command == "snowmelt-window-report":
+        return snowmelt_window_report_command(args)
     parser.error(f"Unknown command: {args.command}")
     return 2
 

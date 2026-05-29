@@ -24,6 +24,9 @@ ALLOWED_DOC_FLUX_OUTPUT_DIRS = [
     path("outputs", "tables", "may_july_flux"),
     path("outputs", "reports", "may_july_flux"),
     path("outputs", "figures", "may_july_flux"),
+    path("outputs", "tables", "snowmelt_windows"),
+    path("outputs", "reports", "snowmelt_windows"),
+    path("outputs", "figures", "snowmelt_windows"),
 ]
 ALLOWED_DOC_MODEL_ARTIFACTS = {
     "production_candidate_r4_daily_doc_model.joblib",
