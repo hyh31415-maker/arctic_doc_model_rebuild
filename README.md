@@ -188,3 +188,14 @@ python -m pytest
 ```
 
 This phase selects core annual trend, full hindcast sensitivity, high-confidence-only, sensitivity-only, and excluded/caveated river-year cohorts from existing guarded flux tables. It does not retrain models, regenerate DOC predictions, recalculate flux, or run formal trend tests. May-July remains a provisional flux window, not a final snowmelt estimate.
+
+## Annual DOC Flux Trend Analysis Phase
+
+```powershell
+python -m arctic_doc_model_rebuild.cli verify-gold-data
+python -m arctic_doc_model_rebuild.cli run-annual-flux-trends
+python -m arctic_doc_model_rebuild.cli annual-flux-trend-report
+python -m pytest
+```
+
+This phase analyzes annual DOC flux trends by cohort using existing annual flux and flux interpretation tables. It does not retrain models, regenerate DOC predictions, recalculate flux, create new daily flux, or analyze May-July/snowmelt windows. Core 2003-2024 trends are primary; full 2000-2025 and high-confidence-only cohorts are sensitivity checks.

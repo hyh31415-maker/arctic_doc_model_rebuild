@@ -1,0 +1,8 @@
+caveat_item,river,status,evidence,trend_implication
+Yenisey_high_low_confidence_flux_fraction,Yenisey,carry_forward,Yenisey has 11 years with fraction_flux_from_low_confidence_days >= 0.25.,Emphasize core cohort and inspect sensitivity; avoid overclaiming full-period Yenisey trend.
+Yukon_zero_or_near_zero_2000,Yukon,carry_forward,Yukon 2000 annual flux is zero or near-zero in cohort diagnostics.,Do not let 2000 drive full-period sensitivity; primary core excludes 2000.
+Kolyma_excluded_and_low_confidence_years,Kolyma,carry_forward,Kolyma has excluded years and high low-confidence-fraction years.,Use core cohort as primary and report excluded years.
+Ob_excluded_and_low_confidence_year,Ob,carry_forward,Ob has one excluded year and one high low-confidence-fraction year.,Core result is primary; full-period sensitivity is caveated.
+Mackenzie_2025_coverage,Mackenzie,carry_forward,Mackenzie 2025 is sensitivity due coverage <0.95.,Primary core excludes 2025.
+May_July_not_analyzed,all,not_in_scope,Annual May-July and snowmelt windows are not analyzed in this phase.,Do not interpret annual trends as snowmelt-window trends.
+uncertainty_scope,all,carry_forward,Annual flux intervals carry DOC concentration uncertainty only.,Discharge uncertainty is not propagated in trend sensitivity.

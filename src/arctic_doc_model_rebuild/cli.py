@@ -235,6 +235,24 @@ def flux_cohort_report_command(args: argparse.Namespace) -> int:
     return 0
 
 
+def run_annual_flux_trends_command(args: argparse.Namespace) -> int:
+    from .flux.trend_analysis import run_annual_flux_trends
+
+    result = run_annual_flux_trends()
+    print(f"Annual flux trend report written to {result['report']}.")
+    print(f"Annual flux trend tables generated: {len(result['tables'])}")
+    print(f"Annual flux trend figures generated: {len(result['figures'])}")
+    return 0
+
+
+def annual_flux_trend_report_command(args: argparse.Namespace) -> int:
+    from .flux.trend_reports import write_annual_flux_trend_report
+
+    report_path = write_annual_flux_trend_report()
+    print(f"Annual flux trend report written to {report_path}.")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="arctic-doc-model", description="Arctic DOC model rebuild data contract tools.")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -266,6 +284,8 @@ def build_parser() -> argparse.ArgumentParser:
     subparsers.add_parser("doc-flux-report", help="Rewrite the guarded DOC flux report from existing flux tables.")
     subparsers.add_parser("select-flux-analysis-cohorts", help="Select flux interpretation cohorts from existing DOC flux tables without trend tests.")
     subparsers.add_parser("flux-cohort-report", help="Rewrite the flux interpretation cohort report from existing cohort tables.")
+    subparsers.add_parser("run-annual-flux-trends", help="Analyze annual DOC flux trends by cohort without recomputing flux.")
+    subparsers.add_parser("annual-flux-trend-report", help="Rewrite the annual DOC flux trend report from existing trend tables.")
     return parser
 
 
@@ -322,6 +342,10 @@ def main(argv: Iterable[str] | None = None) -> int:
         return select_flux_analysis_cohorts_command(args)
     if args.command == "flux-cohort-report":
         return flux_cohort_report_command(args)
+    if args.command == "run-annual-flux-trends":
+        return run_annual_flux_trends_command(args)
+    if args.command == "annual-flux-trend-report":
+        return annual_flux_trend_report_command(args)
     parser.error(f"Unknown command: {args.command}")
     return 2
 

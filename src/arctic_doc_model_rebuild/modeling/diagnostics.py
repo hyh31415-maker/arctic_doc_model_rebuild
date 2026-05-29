@@ -18,6 +18,9 @@ ALLOWED_DOC_FLUX_OUTPUT_DIRS = [
     path("outputs", "tables", "flux_interpretation"),
     path("outputs", "reports", "flux_interpretation"),
     path("outputs", "figures", "flux_interpretation"),
+    path("outputs", "tables", "annual_flux_trends"),
+    path("outputs", "reports", "annual_flux_trends"),
+    path("outputs", "figures", "annual_flux_trends"),
 ]
 ALLOWED_DOC_MODEL_ARTIFACTS = {
     "production_candidate_r4_daily_doc_model.joblib",

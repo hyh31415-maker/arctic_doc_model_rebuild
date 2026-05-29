@@ -25,6 +25,8 @@ outputs/figures/*
 !outputs/figures/doc_flux/*.png
 !outputs/figures/flux_interpretation/
 !outputs/figures/flux_interpretation/*.png
+!outputs/figures/annual_flux_trends/
+!outputs/figures/annual_flux_trends/*.png
 *.joblib
 *.pkl
 *.pickle
