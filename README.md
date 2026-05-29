@@ -199,3 +199,14 @@ python -m pytest
 ```
 
 This phase analyzes annual DOC flux trends by cohort using existing annual flux and flux interpretation tables. It does not retrain models, regenerate DOC predictions, recalculate flux, create new daily flux, or analyze May-July/snowmelt windows. Core 2003-2024 trends are primary; full 2000-2025 and high-confidence-only cohorts are sensitivity checks.
+
+## Provisional May-July Flux Interpretation Phase
+
+```powershell
+python -m arctic_doc_model_rebuild.cli verify-gold-data
+python -m arctic_doc_model_rebuild.cli run-may-july-flux-interpretation
+python -m arctic_doc_model_rebuild.cli may-july-flux-report
+python -m pytest
+```
+
+This phase interprets the fixed provisional May-July DOC flux window against annual flux cohorts and annual trend results. It does not retrain models, regenerate DOC predictions, recalculate flux, or refine hydrologic snowmelt windows. May-July remains provisional and is not final snowmelt.

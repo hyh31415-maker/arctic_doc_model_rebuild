@@ -27,6 +27,8 @@ outputs/figures/*
 !outputs/figures/flux_interpretation/*.png
 !outputs/figures/annual_flux_trends/
 !outputs/figures/annual_flux_trends/*.png
+!outputs/figures/may_july_flux/
+!outputs/figures/may_july_flux/*.png
 *.joblib
 *.pkl
 *.pickle

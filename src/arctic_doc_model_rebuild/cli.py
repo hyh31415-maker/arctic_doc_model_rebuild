@@ -253,6 +253,24 @@ def annual_flux_trend_report_command(args: argparse.Namespace) -> int:
     return 0
 
 
+def run_may_july_flux_interpretation_command(args: argparse.Namespace) -> int:
+    from .flux.may_july_interpretation import run_may_july_flux_interpretation
+
+    result = run_may_july_flux_interpretation()
+    print(f"May-July flux interpretation report written to {result['report']}.")
+    print(f"May-July flux interpretation tables generated: {len(result['tables'])}")
+    print(f"May-July flux interpretation figures generated: {len(result['figures'])}")
+    return 0
+
+
+def may_july_flux_report_command(args: argparse.Namespace) -> int:
+    from .flux.may_july_reports import write_may_july_flux_report
+
+    report_path = write_may_july_flux_report()
+    print(f"May-July flux interpretation report written to {report_path}.")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="arctic-doc-model", description="Arctic DOC model rebuild data contract tools.")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -286,6 +304,8 @@ def build_parser() -> argparse.ArgumentParser:
     subparsers.add_parser("flux-cohort-report", help="Rewrite the flux interpretation cohort report from existing cohort tables.")
     subparsers.add_parser("run-annual-flux-trends", help="Analyze annual DOC flux trends by cohort without recomputing flux.")
     subparsers.add_parser("annual-flux-trend-report", help="Rewrite the annual DOC flux trend report from existing trend tables.")
+    subparsers.add_parser("run-may-july-flux-interpretation", help="Interpret provisional May-July DOC flux without recomputing flux.")
+    subparsers.add_parser("may-july-flux-report", help="Rewrite the provisional May-July DOC flux interpretation report.")
     return parser
 
 
@@ -346,6 +366,10 @@ def main(argv: Iterable[str] | None = None) -> int:
         return run_annual_flux_trends_command(args)
     if args.command == "annual-flux-trend-report":
         return annual_flux_trend_report_command(args)
+    if args.command == "run-may-july-flux-interpretation":
+        return run_may_july_flux_interpretation_command(args)
+    if args.command == "may-july-flux-report":
+        return may_july_flux_report_command(args)
     parser.error(f"Unknown command: {args.command}")
     return 2
 

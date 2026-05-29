@@ -1,0 +1,7 @@
+river,annual_flux_trend_direction,annual_flux_detectable_trend,may_july_flux_trend_direction,may_july_flux_detectable_trend,may_july_fraction_trend_direction,may_july_fraction_detectable_trend,does_may_july_explain_annual_signal,interpretation
+Kolyma,flat_or_uncertain,False,flat_or_uncertain,False,flat_or_uncertain,False,not_applicable,"No detectable annual flux trend in the core cohort, so May-July does not need to explain an annual signal."
+Lena,flat_or_uncertain,False,flat_or_uncertain,False,flat_or_uncertain,False,not_applicable,"No detectable annual flux trend in the core cohort, so May-July does not need to explain an annual signal."
+Mackenzie,flat_or_uncertain,False,flat_or_uncertain,False,flat_or_uncertain,False,not_applicable,"No detectable annual flux trend in the core cohort, so May-July does not need to explain an annual signal."
+Ob,flat_or_uncertain,False,flat_or_uncertain,False,flat_or_uncertain,False,not_applicable,"No detectable annual flux trend in the core cohort, so May-July does not need to explain an annual signal."
+Yenisey,flat_or_uncertain,False,flat_or_uncertain,False,flat_or_uncertain,False,not_applicable,"No detectable annual flux trend in the core cohort, so May-July does not need to explain an annual signal."
+Yukon,increasing,True,flat_or_uncertain,False,decreasing,True,no,The annual flux signal is not mirrored by a detectable May-July flux trend.
