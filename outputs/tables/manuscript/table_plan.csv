@@ -1,0 +1,6 @@
+table_id,table_title,source_outputs,purpose
+Table 1,Frozen data sources and model inputs,outputs/tables/gold_input_inventory.csv; outputs/reports/data_contract_report.md,"Document gold freeze provenance, tables, row counts, and hashes."
+Table 2,DOC concentration model selection and guardrails,outputs/tables/final_synthesis/model_evolution_summary.csv; outputs/tables/bias_refinement/bias_refinement_recommendation.csv,Show progression from F3 baseline to R4 production candidate and optical exclusion.
+Table 3,Annual DOC flux trend by river,outputs/tables/final_synthesis/annual_flux_trend_summary_for_manuscript.csv,Primary trend evidence for Yukon-only detectable annual increase.
+Table 4,Flux attribution and DOC export regime classification,outputs/tables/flux_attribution/flux_driver_classification.csv; outputs/tables/freshet_control/export_regime_classification.csv,"Connect annual trends to Q volume, flow-weighted DOC, export timing, and regime labels."
+Table 5,Caveats and claims boundary register,outputs/tables/final_synthesis/caveat_register.csv; outputs/reports/manuscript/claims_to_avoid.md,"Make uncertainty, domain, optical, and snowmelt interpretation limits explicit."

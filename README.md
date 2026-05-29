@@ -269,3 +269,13 @@ python -m pytest
 ```
 
 This phase integrates existing daily flux, dynamic snowmelt-window summaries, flux attribution, export phenology, and annual trend outputs to classify DOC export regimes and diagnose whether Yukon is better interpreted as freshet-controlled or extended-season discharge-driven export. It does not retrain models, generate new DOC predictions, recalculate flux, or modify gold data. Snowmelt/freshet windows remain operational definitions, and the synthesis is exploratory rather than causal proof.
+
+## Manuscript Outline and Results Narrative Phase
+
+```powershell
+python -m arctic_doc_model_rebuild.cli draft-manuscript-outline
+python -m arctic_doc_model_rebuild.cli manuscript-outline-report
+python -m pytest
+```
+
+This phase turns existing synthesis outputs into a manuscript outline, results narrative draft, abstract draft, figure plan, table plan, key claims evidence map, and claims-to-avoid register. It performs no model training, no new DOC prediction, no flux recalculation, no new analysis, and no gold data modification.

@@ -351,6 +351,23 @@ def freshet_control_report_command(args: argparse.Namespace) -> int:
     return 0
 
 
+def draft_manuscript_outline_command(args: argparse.Namespace) -> int:
+    from .manuscript import draft_manuscript_outline
+
+    result = draft_manuscript_outline()
+    print(f"Manuscript reports generated: {len(result['reports'])}")
+    print(f"Manuscript tables generated: {len(result['tables'])}")
+    return 0
+
+
+def manuscript_outline_report_command(args: argparse.Namespace) -> int:
+    from .manuscript import write_manuscript_outline_report
+
+    report_path = write_manuscript_outline_report()
+    print(f"Manuscript outline written to {report_path}.")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="arctic-doc-model", description="Arctic DOC model rebuild data contract tools.")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -395,6 +412,8 @@ def build_parser() -> argparse.ArgumentParser:
     subparsers.add_parser("flux-attribution-report", help="Rewrite the flux attribution reports from existing attribution tables.")
     subparsers.add_parser("synthesize-freshet-control", help="Synthesize freshet control, extended-season export, and DOC export phenology from existing outputs.")
     subparsers.add_parser("freshet-control-report", help="Rewrite the freshet control synthesis report from existing freshet-control tables.")
+    subparsers.add_parser("draft-manuscript-outline", help="Draft manuscript outline, narrative, abstract, figure/table plans, and claims boundaries from existing outputs.")
+    subparsers.add_parser("manuscript-outline-report", help="Rewrite the manuscript outline report from existing manuscript tables.")
     return parser
 
 
@@ -477,6 +496,10 @@ def main(argv: Iterable[str] | None = None) -> int:
         return synthesize_freshet_control_command(args)
     if args.command == "freshet-control-report":
         return freshet_control_report_command(args)
+    if args.command == "draft-manuscript-outline":
+        return draft_manuscript_outline_command(args)
+    if args.command == "manuscript-outline-report":
+        return manuscript_outline_report_command(args)
     parser.error(f"Unknown command: {args.command}")
     return 2
 
