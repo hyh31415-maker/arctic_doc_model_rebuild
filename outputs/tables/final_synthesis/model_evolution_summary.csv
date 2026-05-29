@@ -1,0 +1,6 @@
+stage,candidate_model,result,decision,reason
+baseline_finalization,F3_q_season_river_fixed + ridge_alpha_1,F3 baseline selected after baseline finalization.,selected_as_validation_baseline,F6 hydroclimate extension had negligible same-sample improvement over F3.
+hydroclimate_extension,F6_reduced_hydroclimate_river_fixed + ridge_alpha_1,F6 hydroclimate extension not primary.,retain_as_process_sensitivity,Hydroclimate extension improved RMSE by only about 0.0013 mg C/L on the same sample.
+optical_sensitivity,Optical proxy feature sets O2/O3/O4/O5 against F3 same-sample baseline,Optical excluded.,exclude_from_primary_model,Reflectance/index proxy feature sets did not provide robust incremental value and often worsened F3 on optical-matched rows.
+bias_aware_refinement,R4_river_specific_Q_and_season + linear_regression,R4 bias-aware refined model selected as production candidate.,production_candidate,"Candidate met LOYO improvement, Lena, high-DOC, fold-stability, GroupKFold, and interpretability criteria."
+target_transform_sensitivity,log target sensitivity candidates,log target sensitivity only.,do_not_promote,Log-target candidates remain sensitivity-only unless a separate target-transform decision is made.

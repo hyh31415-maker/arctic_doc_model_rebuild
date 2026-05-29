@@ -222,3 +222,28 @@ python -m pytest
 ```
 
 This phase defines river-year hydrologic freshet windows from daily Q and snow/hydroclimate variables, then sums existing guarded daily DOC flux into those windows. It does not retrain models, regenerate DOC predictions, recalculate daily flux, or modify gold data. Fixed May-July remains a provisional reference window.
+
+## Final Synthesis / Manuscript-Ready Results Summary Phase
+
+```powershell
+python -m arctic_doc_model_rebuild.cli verify-gold-data
+python -m arctic_doc_model_rebuild.cli synthesize-results
+python -m arctic_doc_model_rebuild.cli synthesis-report
+python -m pytest
+```
+
+This phase reads existing reports and output tables only. It does not train models, does not generate new daily DOC predictions, does not recalculate flux, does not redefine snowmelt windows, and does not modify the gold data freeze.
+
+Main outputs:
+
+- `outputs/reports/final_synthesis/final_synthesis_report.md`
+- `outputs/tables/final_synthesis/core_findings.csv`
+- `outputs/tables/final_synthesis/model_evolution_summary.csv`
+- `outputs/tables/final_synthesis/annual_flux_trend_summary_for_manuscript.csv`
+- `outputs/tables/final_synthesis/aggregate_flux_trend_summary_for_manuscript.csv`
+- `outputs/tables/final_synthesis/snowmelt_interpretation_summary.csv`
+- `outputs/tables/final_synthesis/caveat_register.csv`
+- `outputs/tables/final_synthesis/recommended_manuscript_figures.csv`
+- `outputs/tables/final_synthesis/recommended_manuscript_tables.csv`
+
+Interpretation boundaries carried into the synthesis: optical reflectance is proxy evidence, not DOC observation; May-July is provisional; dynamic snowmelt/freshet windows are exploratory/interpretive; discharge uncertainty is not propagated; and the six-river ArcticGRO domain is not a full pan-Arctic DOC budget.

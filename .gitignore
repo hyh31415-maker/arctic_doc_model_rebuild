@@ -31,6 +31,8 @@ outputs/figures/*
 !outputs/figures/may_july_flux/*.png
 !outputs/figures/snowmelt_windows/
 !outputs/figures/snowmelt_windows/*.png
+!outputs/figures/final_synthesis/
+!outputs/figures/final_synthesis/.gitkeep
 *.joblib
 *.pkl
 *.pickle

@@ -1,0 +1,10 @@
+caveat_id,topic,severity,description,affected_results,how_to_report
+C01,uncertainty,high,DOC uncertainty only; discharge uncertainty is not propagated.,daily flux; annual flux; trend tests; snowmelt-window flux,State that flux intervals are based on DOC concentration empirical residual intervals only.
+C02,Yenisey confidence,high,Yenisey has low-confidence flux years and many years with high low-confidence flux fraction.,Yenisey annual flux and sensitivity cohorts,Avoid strong Yenisey-specific trend claims; emphasize core cohort and confidence tiers.
+C03,Yukon early hindcast,high,Yukon 2000 near-zero issue is excluded/caveated and should not drive interpretation.,full 2000-2025 sensitivity; Yukon trend context,Use core 2003-2024 as primary; report 2000 as caveated sensitivity only.
+C04,Kolyma/Ob caveated years,medium,Kolyma and Ob include excluded or caveated years driven by coverage or low-confidence flux fraction.,full-period and high-confidence sensitivity cohorts,Use core cohort as primary and retain excluded/caveated year notes.
+C05,Mackenzie 2025,medium,Mackenzie 2025 coverage caveat keeps 2025 outside the primary core trend.,full 2000-2025 sensitivity,Keep Mackenzie 2025 as sensitivity context only.
+C06,ROI,medium,ROI visual review caveats remain even though ROI QC found no freeze-reopen requirement.,optical sensitivity interpretation,"State that ROI caveats mainly affect optical proxy analyses, not hydrocore production flux."
+C07,Optical proxy,medium,Optical proxy negative result: reflectance features did not robustly improve the DOC baseline.,model selection; optical sensitivity,Do not frame the study as satellite DOC retrieval; describe optical layers as sensitivity/proxy evidence.
+C08,Snowmelt windows,medium,Snowmelt windows are exploratory/interpretive.,dynamic window flux and fraction trends,Use cautious attribution language; do not claim final hydrologic attribution.
+C09,Spatial domain,high,No pan-Arctic extrapolation beyond six ArcticGRO rivers.,aggregate flux and trend conclusions,"Refer to the six-river ArcticGRO domain, not a full Arctic Ocean DOC budget."

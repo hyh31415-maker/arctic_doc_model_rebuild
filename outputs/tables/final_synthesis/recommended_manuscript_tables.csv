@@ -1,0 +1,6 @@
+table_id,table_title,source_outputs,purpose
+Table1,Gold data sources and row counts,outputs/tables/gold_input_inventory.csv; outputs/reports/gold_data_summary_report.md,Document the frozen data source and modeling inputs.
+Table2,Model selection summary,outputs/tables/final_synthesis/model_evolution_summary.csv,Show why R4 is the production candidate and optical is excluded.
+Table3,Annual trend by river,outputs/tables/final_synthesis/annual_flux_trend_summary_for_manuscript.csv,Main river-specific annual flux trend result.
+Table4,Dynamic snowmelt window interpretation,outputs/tables/final_synthesis/snowmelt_interpretation_summary.csv,"Summarize why Yukon snowmelt explanation is partial, not decisive."
+Table5,Caveat register,outputs/tables/final_synthesis/caveat_register.csv,Make interpretation limits explicit.

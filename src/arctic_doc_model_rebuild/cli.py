@@ -297,6 +297,23 @@ def snowmelt_window_report_command(args: argparse.Namespace) -> int:
     return 0
 
 
+def synthesize_results_command(args: argparse.Namespace) -> int:
+    from .final_synthesis import synthesize_results
+
+    result = synthesize_results()
+    print(f"Final synthesis report written to {result['report']}.")
+    print(f"Final synthesis tables generated: {len([key for key in result if key != 'report'])}")
+    return 0
+
+
+def synthesis_report_command(args: argparse.Namespace) -> int:
+    from .final_synthesis import write_final_synthesis_report
+
+    report_path = write_final_synthesis_report()
+    print(f"Final synthesis report written to {report_path}.")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="arctic-doc-model", description="Arctic DOC model rebuild data contract tools.")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -335,6 +352,8 @@ def build_parser() -> argparse.ArgumentParser:
     subparsers.add_parser("define-snowmelt-windows", help="Define dynamic hydrologic snowmelt/freshet windows without recomputing flux.")
     subparsers.add_parser("run-snowmelt-window-flux", help="Sum existing daily DOC flux into dynamic snowmelt windows and analyze trends.")
     subparsers.add_parser("snowmelt-window-report", help="Rewrite the hydrologic snowmelt window report from existing tables.")
+    subparsers.add_parser("synthesize-results", help="Synthesize existing model, flux, trend, and snowmelt outputs into manuscript-ready tables without rerunning science steps.")
+    subparsers.add_parser("synthesis-report", help="Rewrite the final synthesis manuscript-ready report from existing synthesis tables.")
     return parser
 
 
@@ -405,6 +424,10 @@ def main(argv: Iterable[str] | None = None) -> int:
         return run_snowmelt_window_flux_command(args)
     if args.command == "snowmelt-window-report":
         return snowmelt_window_report_command(args)
+    if args.command == "synthesize-results":
+        return synthesize_results_command(args)
+    if args.command == "synthesis-report":
+        return synthesis_report_command(args)
     parser.error(f"Unknown command: {args.command}")
     return 2
 
